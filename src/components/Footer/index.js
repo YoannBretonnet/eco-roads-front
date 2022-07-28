@@ -25,7 +25,7 @@ function Footer() {
         <div id="footer-decorations-second-element" />
         <div id="footer-decorations-third-element" />
       </div>
-      <nav className="menu">
+      <nav className="menu-footer">
         <Tooltip title="À propos">
           <NavLink
             key="about"

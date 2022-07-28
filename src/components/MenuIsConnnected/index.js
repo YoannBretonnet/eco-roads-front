@@ -1,5 +1,8 @@
 // == Style
 import './styles.scss';
+
+import { NavLink } from 'react-router-dom';
+
 import {
   Menu,
   MenuItem,
@@ -66,11 +69,23 @@ function MenuIsConnnected({ inputMenu, setinputMenu }) {
       transformOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
     >
-      <MenuItem sx={{ gap: '1vh' }}>
-        <BiCog size={`${args.littleSize}vh`} /> Profil
+      <MenuItem>
+        <NavLink
+          key="profile"
+          className={({ isActive }) => (isActive ? 'menu-is-connected-link menu-is-connected-link--active' : 'menu-is-connected-link')}
+          to="/profile"
+        >
+          <BiCog size={`${args.littleSize}vh`} /> Profil
+        </NavLink>
       </MenuItem>
-      <MenuItem sx={{ gap: '1vh' }}>
-        <BiExit size={`${args.littleSize}vh`} /> Se déconnecter
+      <MenuItem>
+        <NavLink
+          key="logout"
+          className={({ isActive }) => (isActive ? 'menu-is-connected-link menu-is-connected-link--active' : 'menu-is-connected-link')}
+          to="/logout"
+        >
+          <BiExit size={`${args.littleSize}vh`} /> Se déconnecter
+        </NavLink>
       </MenuItem>
     </Menu>
   );
