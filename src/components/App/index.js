@@ -7,7 +7,7 @@ import './styles.scss';
 
 // == Component
 import HomePage from 'src/components/HomePage';
-import ProfilePage from 'src/components/ProfilePage';
+import MapPage from 'src/components/MapPage';
 
 // == Composant
 function App() {
@@ -15,11 +15,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      {
-        isConnected && (
-          <Route path="/profile" element={<ProfilePage />} />
-        )
-      }
+      <Route path="/map" element={<MapPage />} />
     </Routes>
   );
 }
