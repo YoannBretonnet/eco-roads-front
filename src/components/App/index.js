@@ -1,5 +1,5 @@
 // == Initialisation
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Switch } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -9,6 +9,7 @@ import './styles.scss';
 // == Component
 import HomePage from 'src/components/HomePage';
 import MapPage from 'src/components/MapPage';
+import NotFoundPage from 'src/components/NotFoundPage';
 
 import {
   getVehiclesData,
@@ -25,8 +26,9 @@ function App() {
   }, []);
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/map" element={<MapPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/map" element={<MapPage />} />
+        <Route path="*" element={<NotFoundPage/>} />
     </Routes>
   );
 }
