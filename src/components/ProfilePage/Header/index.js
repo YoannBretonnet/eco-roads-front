@@ -17,7 +17,7 @@ function Header() {
     >
       <Tooltip title="Page d'acceuil">
         <NavLink
-          key="about"
+          key="homePage"
           className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
           to="/"
         >

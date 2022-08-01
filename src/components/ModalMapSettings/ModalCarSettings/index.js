@@ -27,7 +27,7 @@ function getFirstFilteredCars(cars, brandInput) {
 }
 
 // == Composant
-function ModalCarSettings({ reducerRoute }) {
+function ModalCarSettings({ reducerRoute, updatePage }) {
   const dispatch = useDispatch();
   const { brandsValue, carValue } = useSelector((state) => state.mapSettings.carSettingsModal);
   const { error, brands, cars } = useSelector((state) => state.mapSettings.vehiclesData);
@@ -98,8 +98,13 @@ function ModalCarSettings({ reducerRoute }) {
   );
 }
 
+ModalCarSettings.defaultProps = {
+  updatePage: false,
+};
+
 ModalCarSettings.propTypes = {
   reducerRoute: PropTypes.string.isRequired,
+  updatePage: PropTypes.bool,
 };
 
 // == Export

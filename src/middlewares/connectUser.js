@@ -1,5 +1,6 @@
 /* eslint-disable no-case-declarations */
 import axios from 'axios';
+import ky from 'ky';
 
 import {
   CONNECT_USER,
@@ -20,31 +21,27 @@ const connectUser = (store) => (next) => (action) => {
   switch (action.type) {
     case CONNECT_USER:
       const state = store.getState();
-      const configConnect = {
-        method: 'post',
-        url: 'https://eco-roads.herokuapp.com/api/v1/user/login',
-        withCredentials: true,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        data: {
+      ky.post('https://eco-roads.herokuapp.com/api/v1/user/login', {
+        throwHttpErrors: false,
+        credentials: 'include',
+        json: {
           email: state.auth.connectionModal.emailValue,
           password: state.auth.connectionModal.passwordValue,
         },
-      };
-      axios(configConnect)
+      })
+        .json()
         .then((response) => {
-          console.log(response.data.accessToken);
-          localStorage.setItem('accessToken', response.data.accessToken);
-          store.dispatch(connectUserSuccess());
-        })
-        .catch((error) => {
-          store.dispatch(connectUserFail(Object.values(error.response.data)[0]));
+          if (response.accessToken) {
+            localStorage.setItem('accessToken', response.accessToken);
+            store.dispatch(connectUserSuccess());
+          }
+          else {
+            store.dispatch(connectUserFail(Object.values(response)[0]));
+          }
         });
       next(action);
       break;
     case CONNECT_USER_SUCCESS:
-      console.log(localStorage.getItem('accessToken'));
       const configProfile = {
         method: 'get',
         url: 'https://eco-roads.herokuapp.com/api/v1/user/profile',
@@ -53,7 +50,6 @@ const connectUser = (store) => (next) => (action) => {
       };
       axios(configProfile)
         .then((response) => {
-          console.log(response.data);
           store.dispatch(getProfilSuccess(response.data));
           store.dispatch(openCloseConnectionModal());
         })

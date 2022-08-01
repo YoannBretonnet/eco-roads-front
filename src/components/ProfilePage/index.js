@@ -1,9 +1,11 @@
 // == Import
-import { useSelector, useDispatch } from 'react-redux';
-// import {  } from 'src/store/action';
 
 import { Box } from '@mui/material';
 
+import ModalAccountUpdate from 'src/components/ModalAuthentification/ModalAccountUpdate';
+import ModalCarSettings from 'src/components/ModalMapSettings/ModalCarSettings';
+import ModalLocalisationSettings from 'src/components/ModalMapSettings/ModalLocalisationSettings';
+import InterestPointModal from 'src/components/ModalMapSettings/InterestPointModal';
 import Header from './Header';
 import Main from './Main';
 
@@ -12,8 +14,9 @@ import './styles.scss';
 
 // == Composant
 function ProfilePage() {
-  const dispatch = useDispatch();
-  // const  = useSelector((state) => state.);
+  const reducerAuth = 'auth';
+  const reducerMap = 'mapSettings';
+  const updatePage = true;
 
   return (
     <Box
@@ -25,6 +28,21 @@ function ProfilePage() {
     >
       <Header />
       <Main />
+      <ModalAccountUpdate
+        reducerRoute={reducerAuth}
+      />
+      <ModalCarSettings
+        updatePage={updatePage}
+        reducerRoute={reducerMap}
+      />
+      <ModalLocalisationSettings
+        updatePage={updatePage}
+        reducerRoute={reducerMap}
+      />
+      <InterestPointModal
+        updatePage={updatePage}
+        reducerRoute={reducerMap}
+      />
     </Box>
   );
 }

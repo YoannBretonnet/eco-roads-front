@@ -16,8 +16,8 @@ import {
   openCloseCarModal,
   openCloseLocalisationModal,
   openCloseInterestPointModal,
-  getVehiclesData,
-  getCategoriesData,
+  // getVehiclesData,
+  // getCategoriesData,
 } from 'src/actions/mapSettings';
 
 import {
@@ -38,10 +38,10 @@ function Header() {
     size: '4vh',
   };
   const reducerRoute = 'mapSettings';
-  useEffect(() => {
-    dispatch(getVehiclesData());
-    dispatch(getCategoriesData());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getVehiclesData());
+  //   dispatch(getCategoriesData());
+  // }, []);
   return (
     <>
       <Box

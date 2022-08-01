@@ -2,6 +2,14 @@
 import { useSelector, useDispatch } from 'react-redux';
 // import {  } from 'src/store/action';
 
+import {
+  openCloseAccountUpdateModal,
+} from 'src/actions/authentification';
+
+import {
+  openCloseCarModal,
+} from 'src/actions/mapSettings';
+
 // == Style
 import {
   Box, Tooltip, IconButton, Chip, Button,
@@ -12,10 +20,17 @@ import {
   BiEdit,
 } from 'react-icons/bi';
 
+// const getGoodBrand = (brands, brandId) => brands.filter((option) => option.id === brandId)[0].name;
+
 // == Composant
 function Main() {
   const dispatch = useDispatch();
-  const { carOwned, localisation, categories } = useSelector((state) => state.profile.profile);
+  const {
+    userName,
+    car,
+    location,
+    categories,
+  } = useSelector((state) => state.auth.initialUserAccount);
 
   return (
     <Box
@@ -32,11 +47,12 @@ function Main() {
         }}
       >
         <h2 className="main-message">
-          Bienvenue Gaetan
+          {`Bienvenue ${userName}`}
         </h2>
         <Tooltip title="Paramètre de sécurité">
           <IconButton
             sx={{ position: 'relative', bottom: '-1vh' }}
+            onClick={() => dispatch(openCloseAccountUpdateModal())}
           >
             <BiEdit size="3vh" />
           </IconButton>
@@ -47,21 +63,21 @@ function Main() {
           <p>
             Type de véhicule:
           </p>
-          <Chip label={carOwned.brand.name} />
-          <Chip label={carOwned.car.model} />
+          <Chip label={car.name} />
+          <Chip label={car.model} />
         </article>
         <article className="user-preferences-container-departureData user-preferences-container-element">
           <p>
             Point de départ:
           </p>
-          <Chip label={`${localisation.street_number} ${localisation.adress}, ${localisation.city}`} />
+          <Chip label={`${location.street_number} ${location.address}, ${location.city}`} />
         </article>
         <article className="user-preferences-container-departureData user-preferences-container-element">
           <p>
             Centres d'intérêts:
           </p>
           {
-            categories.map((categorie) => <Chip key={categorie.id} label={categorie.name} />)
+            categories.map((categorie) => <Chip key={categorie.id} label={categorie.category} />)
           }
         </article>
         <Tooltip title="Paramètre de préférence">
@@ -72,6 +88,7 @@ function Main() {
                 width: 'fit-content', margin: 'auto', backgroundColor: '#6cc573',
               },
             }}
+            onClick={() => dispatch(openCloseCarModal())}
           >
             Modifier mes informations de trajet
           </Button>

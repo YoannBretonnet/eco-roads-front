@@ -27,7 +27,7 @@ import { BiChevronRight, BiChevronLeft } from 'react-icons/bi';
 import ModalElement from 'src/components/ModalElement';
 
 // == Composant
-function ModalLocalisationSettings({ reducerRoute }) {
+function ModalLocalisationSettings({ reducerRoute, updatePage }) {
   const dispatch = useDispatch();
   const {
     DepartProposition,
@@ -92,6 +92,8 @@ function ModalLocalisationSettings({ reducerRoute }) {
             />
           )}
         />
+        {
+          !updatePage && (
         <Autocomplete
           inputValue={ArrivSelected.label}
           onChange={(_event, value) => dispatch(changeMapSettingAutocompleteValue(value, arriv.inputElement, modalElement))}
@@ -120,6 +122,8 @@ function ModalLocalisationSettings({ reducerRoute }) {
             />
           )}
         />
+          )
+        }
         <Box
           component="nav"
           sx={{
@@ -145,8 +149,13 @@ function ModalLocalisationSettings({ reducerRoute }) {
   );
 }
 
+ModalLocalisationSettings.defaultProps = {
+  updatePage: false,
+};
+
 ModalLocalisationSettings.propTypes = {
   reducerRoute: PropTypes.string.isRequired,
+  updatePage: PropTypes.bool,
 };
 
 // == Export

@@ -25,7 +25,7 @@ import ModalElement from 'src/components/ModalElement';
 
 const isTrue = (selected, option) => selected.includes(option);
 // == Composant
-function InterestPointModal({ reducerRoute }) {
+function InterestPointModal({ reducerRoute, updatePage }) {
   const dispatch = useDispatch();
   const selected = useSelector((state) => state.mapSettings.interestPointModal.selected);
   const { error, list } = useSelector((state) => state.mapSettings.categoriesData);
@@ -108,8 +108,13 @@ function InterestPointModal({ reducerRoute }) {
   );
 }
 
+InterestPointModal.defaultProps = {
+  updatePage: false,
+};
+
 InterestPointModal.propTypes = {
   reducerRoute: PropTypes.string.isRequired,
+  updatePage: PropTypes.bool,
 };
 
 // == Export
