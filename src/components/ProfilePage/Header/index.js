@@ -15,7 +15,7 @@ function Header() {
       component="header"
       sx={{ marginTop: '1.5vh', display: 'flex' }}
     >
-      <Tooltip title="Page d'acceuil">
+      <Tooltip title="Page d'accueil">
         <NavLink
           key="homePage"
           className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}

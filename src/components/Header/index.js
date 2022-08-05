@@ -49,7 +49,7 @@ function Header() {
       >
         {!matches && (
         <Tooltip
-          title="Page d'acceuil"
+          title="Page d'accueil"
           sx={{ position: 'absolute', top: '0', left: '0' }}
         >
           <NavLink

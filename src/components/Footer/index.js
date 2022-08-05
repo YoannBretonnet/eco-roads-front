@@ -40,13 +40,13 @@ function Footer() {
         </div>
       )}
       <nav className="menu-footer">
-        <Tooltip title="Page d'acceuil">
+        <Tooltip title="Page d'accueil">
           <NavLink
             key="homePage"
             style={({ isActive }) => ({ display: isActive ? 'none' : 'flex', gap: '1vw' })}
             to="/"
           >
-            Page d'acceuil
+            Page d'accueil
             <p className="menu-separator">-</p>
           </NavLink>
         </Tooltip>
