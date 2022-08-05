@@ -88,10 +88,10 @@ function InterestPointModal({ reducerRoute, updatePage }) {
             ))}
           </FormGroup>
           {isErrorMax && (
-            <FormHelperText>Veuillez retirer des points d'intérets</FormHelperText>
+            <FormHelperText>Veuillez retirer des points d'intérêts</FormHelperText>
           )}
           {isErrorMin && (
-            <FormHelperText>Veuillez ajouter des points d'intérets</FormHelperText>
+            <FormHelperText>Veuillez ajouter des points d'intérêts</FormHelperText>
           )}
         </FormControl>
         {error.isError && (
