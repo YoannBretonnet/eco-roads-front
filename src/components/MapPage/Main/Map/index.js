@@ -116,6 +116,7 @@ export default function Map() {
       // const coordinates = e.features[0].geometry.coordinates.slice();
       const { coordinates } = e.features[0].geometry;
       const {
+        description,
         adresse,
         title,
         image,
@@ -127,7 +128,8 @@ export default function Map() {
           `<div>
         <img crossOrigin="anonymous" src="${image}" />
         <h3>${title}</h3>
-          <p>${adresse}</p>
+        <p>${description}</p>
+        <p>${adresse}</p>
         </div>`,
         )
         .addTo(map.current);
@@ -169,6 +171,7 @@ export default function Map() {
                 ],
               },
             });
+            
 
             // Add a layer to use the image to represent the data.
             map.current.addLayer({
@@ -185,6 +188,39 @@ export default function Map() {
       });
       // Load a local image
     });
+
+      // Quand on clique, ça ouvre une pop-up au niveau des coordonnées de la borne
+      map.current.on('click', '${borne.properties.title} ${index + 1} ${index + 1}`', (e) => {
+        // const coordinates = e.features[0].geometry.coordinates.slice();
+        const { coordinates } = e.features[0].geometry;
+        const {
+          adresse,
+          title,
+          image,
+        } = e.features[0].properties;
+
+        new mapboxgl.Popup()
+          .setLngLat(coordinates)
+          .setHTML(
+            `<div>
+          <img crossOrigin="anonymous" src="${image}" />
+          <h3>${title}</h3>
+          <p>${adresse}</p>
+          </div>`,
+          )
+          .addTo(map.current);
+      });
+
+      // On change le pointeur du curseur
+      map.current.on('mouseenter', '${borne.properties.title} ${index + 1} ${index + 1}`', () => {
+        map.current.getCanvas().style.cursor = 'pointer';
+      });
+
+      map.current.on('mouseleave', '${borne.properties.title} ${index + 1} ${index + 1}`', () => {
+        map.current.getCanvas().style.cursor = '';
+      });
+
+
   }, [InterestsPoint]);
 
   return (
