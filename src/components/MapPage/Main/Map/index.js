@@ -38,6 +38,7 @@ export default function Map() {
     },
   };
   const bornesArray = pointCoords.data.features.filter((option) => option.borne === true);
+  
   useEffect(() => {
     map.current = null;
     // on inititalise la map, centrée entre le point de départ et d'arrivée
@@ -189,7 +190,7 @@ export default function Map() {
   }, [InterestsPoint]);
 
   return (
-    <section className="map">
+    <section ref={map} className="map">
       <aside ref={mapContainer} className="map-container" />
       {
             !isConnected ? (
