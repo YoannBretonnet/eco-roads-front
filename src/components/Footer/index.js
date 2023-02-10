@@ -15,7 +15,7 @@ function Footer() {
   const matches = useMediaQuery(theme.breakpoints.down('tablet'));
   const saveCGU = () => {
     saveAs(
-      'https://eco-roads.herokuapp.com/pdf/CGU_E-CO_ROADS.pdf',
+      'https://eco-roads.uapp.com/pdf/CGU_E-CO_ROADS.pdf',
       'CGU.pdf',
     );
   };

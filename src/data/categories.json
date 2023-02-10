@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Panorama",
+        "icon": "attraction-15"
+    },
+    {
+        "name": "Culture",
+        "icon": "museum-15"
+    },
+    {
+        "name": "Gastronomie",
+        "icon": "restaurant-15"
+    },
+    {
+        "name": "Nature",
+        "icon": "park-15"
+    },
+    {
+        "name": "Sport",
+        "icon": "bicycle-share-15"
+    },
+    {
+        "name": "Parc",
+        "icon": "amusement-park-15"
+    }
+]

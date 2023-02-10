@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { openCloseCarModal, changeMapSettingInputValue, openCloseLocalisationModal } from 'src/actions/mapSettings';
 import { useSelector, useDispatch } from 'react-redux';
 import DOMPurify from 'dompurify';
+import brands from 'src/data/brands.json'
+import cars from 'src/data/cars.json'
 
 // == Style
 import './styles.scss';
@@ -31,7 +33,8 @@ function getFirstFilteredCars(cars, brandInput) {
 function ModalCarSettings({ reducerRoute, updatePage }) {
   const dispatch = useDispatch();
   const { brandsValue, carValue } = useSelector((state) => state.mapSettings.carSettingsModal);
-  const { error, brands, cars } = useSelector((state) => state.mapSettings.vehiclesData);
+  // const { error, brands, cars } = useSelector((state) => state.mapSettings.vehiclesData);
+  const { error} = useSelector((state) => state.mapSettings.vehiclesData);
   const modalElement = 'carSettingsModal';
   const inputBrandElement = 'brandsValue';
   const inputCarElement = 'carValue';
@@ -80,7 +83,7 @@ function ModalCarSettings({ reducerRoute, updatePage }) {
           }}
         >
           {getFilteredCars(cars, brandsValue).map((option) => (
-            <option key={option.id} value={option.id}>
+            <option key={option.model} value={option.model}>
               {option.model}
             </option>
           ))}
