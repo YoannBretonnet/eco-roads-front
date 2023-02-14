@@ -52,17 +52,24 @@ function InterestPointModal({ reducerRoute, updatePage }) {
       <h1 className="modal-title">Point d'intérêts</h1>
       <form
         className="modal-form-connection"
-        onSubmit={((event) => {
-          event.preventDefault();
-          if (!isErrorMax && !isErrorMin) {
-            if (updatePage) {
-              dispatch(updateUserTravelParam());
-            }
-            if (!updatePage && isLocalisation) {
-              dispatch(getRouteSuccess(data, navigate));
-            }
-          }
-        })}
+        onSubmit={
+          (
+            (event) => {
+          event.preventDefault(); 
+          dispatch(getRouteSuccess(data, navigate));
+            })
+        }
+        // onSubmit={((event) => {
+        //   event.preventDefault();
+        //   if (!isErrorMax && !isErrorMin) {
+        //     if (updatePage) {
+        //       dispatch(updateUserTravelParam());
+        //     }
+        //     if (!updatePage && isLocalisation) {
+        //       dispatch(getRouteSuccess(data, navigate));
+        //     }
+        //   }
+        // })}
       >
         <FormControl
           required

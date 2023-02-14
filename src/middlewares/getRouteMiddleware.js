@@ -39,6 +39,7 @@ const connectUser = (store) => (next) => (action) => {
         });
       break;
     case GET_ROUTE_SUCCESS:
+      
       store.dispatch(openCloseInterestPointModal());
       action.navigate('/map');
       next(action);

@@ -22,14 +22,20 @@ export default function Map() {
   const map = useRef(null);
   const isConnected = useSelector((state) => state.auth.isConnected);
   const pointCoords = useSelector((state) => state.mapData.pointCoords);
-  const {
-    stLong,
-    stLat,
-    arLong,
-    arLat,
-  } = useSelector((state) => state.mapData.startEndCoords);
+  // const {
+  //   stLong,
+  //   stLat,
+  //   arLong,
+  //   arLat,
+  // } = useSelector((state) => state.mapData.startEndCoords);
+  const stLong = useSelector((state) => state.mapSettings.localisationSettingsModal.DepartSelected.Long);
+  const stLat = useSelector((state) => state.mapSettings.localisationSettingsModal.DepartSelected.Lat);
+  const arLong = useSelector((state) => state.mapSettings.localisationSettingsModal.ArrivSelected.Long);
+  const arLat = useSelector((state) => state.mapSettings.localisationSettingsModal.ArrivSelected.Lat);
   const lng = (stLong + arLong) / 2;
   const lat = (stLat + arLat) / 2;
+
+  console.log ("arLong",arLong);
 
   const bornesArray = pointCoords.data.features.filter((option) => option.borne === true);
   
@@ -49,10 +55,12 @@ export default function Map() {
     const start = [stLong, stLat];
     const end = [arLong, arLat];
 
+    console.log ("start =",   start);
+
     // On récupère les coordonnées des points d'intérêt
     const coords = pointCoords.data.features.map((feature) => feature.geometry.coordinates);
     const coordsReplace = JSON.stringify(coords).replaceAll('],[', ';').replace('[[', '').replace(']]', '');
-
+    
     // On trace le trajet
     map.current.on('load', () => {
       getMapRoute(map, start, coordsReplace, end, accessToken);
@@ -185,7 +193,7 @@ export default function Map() {
   }, [InterestsPoint]);
 
   return (
-    <section ref={map} className="map">
+    <section className="map">
       <aside ref={mapContainer} className="map-container" />
       {/* {
             !isConnected ? (

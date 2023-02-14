@@ -4,6 +4,8 @@ import {
   GET_ROUTE_FAIL,
 } from 'src/actions/mapData';
 
+
+
 export const initialState = {
   startEndCoords: {
     stLong: undefined,

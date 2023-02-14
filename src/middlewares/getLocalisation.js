@@ -15,7 +15,6 @@ const getLocalisation = (store) => (next) => (action) => {
       if (action.inputValue !== '') {
         const config = {
           method: 'get',
-          headers: {"Access-Control-Allow-Origin": "*"},
           url: `https://api-adresse.data.gouv.fr/search/?q=${action.inputValue.replace(/\s/g, '+')}`,
         };
         axios(config)
