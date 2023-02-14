@@ -3,7 +3,7 @@
 import PropTypes from 'prop-types';
 import { openCloseInterestPointModal, selectInterestPoint, openCloseLocalisationModal } from 'src/actions/mapSettings';
 import { updateUserTravelParam } from 'src/actions/authentification';
-import { getRoute } from 'src/actions/mapData';
+import { getRoute, getRouteSuccess } from 'src/actions/mapData';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import DOMPurify from 'dompurify';
@@ -59,7 +59,7 @@ function InterestPointModal({ reducerRoute, updatePage }) {
               dispatch(updateUserTravelParam());
             }
             if (!updatePage && isLocalisation) {
-              dispatch(getRouteSuccess(data, action.navigate));
+              dispatch(getRouteSuccess(data, navigate));
             }
           }
         })}
