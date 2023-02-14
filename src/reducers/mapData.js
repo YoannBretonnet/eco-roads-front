@@ -63,7 +63,7 @@ const reducer = (state = initialState, action = {}) => {
           data: {
             ...state.pointCoords.data,
             features: [
-              ...action.data.road,
+              ...action.data,
             ],
           },
         },
