@@ -1,0 +1,33 @@
+[
+    {
+        "type": "Feature",
+        "properties": {
+        "image": "https://eco-roads.herokuapp.com/imagez",
+        "title": "Parc Majolan",
+            "adresse": "12 rue du parc",
+            "description": "Le parc Majolan est un parc public réalisé dans un style romantique baroque par le paysagiste Louis LeBreton",
+            "icon": "park-15"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-2.09700167867071, 48.0933167969856]
+        }
+    },
+
+    
+    {
+        "type": "Feature",
+        "properties": {
+        "image": "https://eco-roads.herokuapp.com/imagez",
+        "title": "Ferme de la Noune",
+            "adresse": "21 rue de la ferme",
+            "description": "Ferme typique du Médoc au milieu de la forêt de pins, Spécialisés dans l'élevage d'escargots et de la production d'asperges et de fraises, Vous pourrez y acheter tous les produits de la ferme.",
+            "icon": "park-15"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-1.89528853015298, 47.8611830621387]
+        }
+    }
+
+]

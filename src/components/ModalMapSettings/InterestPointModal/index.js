@@ -7,6 +7,9 @@ import { getRoute } from 'src/actions/mapData';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import DOMPurify from 'dompurify';
+import list from 'src/data/categories.json'
+
+import data from 'src/data/coords.json';
 
 // == Style
 import './styles.scss';
@@ -33,7 +36,8 @@ function InterestPointModal({ reducerRoute, updatePage }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const selected = useSelector((state) => state.mapSettings.interestPointModal.selected);
-  const { error, list } = useSelector((state) => state.mapSettings.categoriesData);
+  const { error } = useSelector((state) => state.mapSettings.categoriesData);
+  // const { error, list } = useSelector((state) => state.mapSettings.categoriesData);
   const isLocalisation = useSelector((state) => Boolean(state.mapSettings.localisationSettingsModal.DepartSelected.Lat && state.mapSettings.localisationSettingsModal.ArrivSelected.Lat));
   const { isLoading, error: statusError } = useSelector((state) => state.mapData.status);
   const isErrorMax = selected.length > 3;
@@ -55,7 +59,7 @@ function InterestPointModal({ reducerRoute, updatePage }) {
               dispatch(updateUserTravelParam());
             }
             if (!updatePage && isLocalisation) {
-              dispatch(getRoute(navigate));
+              dispatch(getRouteSuccess(data, action.navigate));
             }
           }
         })}
@@ -70,11 +74,11 @@ function InterestPointModal({ reducerRoute, updatePage }) {
           <FormGroup>
             {list.map((option) => (
               <FormControlLabel
-                key={option.id}
+                key={option.name}
                 sx={{ color: 'black' }}
                 control={(
                   <Checkbox
-                    checked={Boolean(selected.find((select) => select.id === option.id))}
+                    checked={Boolean(selected.find((select) => select.name === option.name))}
                     onChange={(event) => dispatch(selectInterestPoint(event.target.checked, option))}
                     name={option.name}
                     sx={{

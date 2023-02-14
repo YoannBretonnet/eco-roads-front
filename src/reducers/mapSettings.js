@@ -191,7 +191,7 @@ const reducer = (state = initialState, action = {}) => {
           ...state.interestPointModal,
           selected: [
             // eslint-disable-next-line max-len
-            ...state.interestPointModal.selected.filter((option) => option.id !== action.selectedOption.id),
+            ...state.interestPointModal.selected.filter((option) => option.name !== action.selectedOption.name),
           ],
         },
       };
