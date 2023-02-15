@@ -1,6 +1,7 @@
 [
+    
     {
-        "type": "Feature",
+        "type": "FeatureCollection",
         "properties": {
         "image": "https://eco-roads.herokuapp.com/imagez",
         "title": "Parc Majolan",
@@ -16,7 +17,7 @@
 
     
     {
-        "type": "Feature",
+        "type": "FeatureCollection",
         "properties": {
         "image": "https://eco-roads.herokuapp.com/imagez",
         "title": "Ferme de la Noune",
@@ -27,6 +28,36 @@
         "geometry": {
             "type": "Point",
             "coordinates": [-1.89528853015298, 47.8611830621387]
+        }
+    },
+
+    {
+        "type": "Feature",
+        "properties": {
+        "image": "https://eco-roads.herokuapp.com/imagez",
+        "title": "Parc Joli",
+            "adresse": "12 rue du parc",
+            "description": "Le parc Majolan est un parc public réalisé dans un style romantique baroque par le paysagiste Louis LeBreton",
+            "icon": "park-15"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-1.88700167867071, 48.0933167969856]
+        }
+    },
+    
+    {
+        "type": "Feature",
+        "properties": {
+        "image": "https://eco-roads.herokuapp.com/imagez",
+        "title": "Parc Top",
+            "adresse": "12 rue du parc",
+            "description": "Le parc Majolan est un parc public réalisé dans un style romantique baroque par le paysagiste Louis LeBreton",
+            "icon": "park-15"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-1.85700167867071, 48.0993167969856]
         }
     }
 

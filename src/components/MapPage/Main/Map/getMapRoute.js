@@ -1,8 +1,7 @@
 async function getMapRoute(map, start, coordsReplace, end, accessToken) {
   // On fait une requête de trajet à mapBox avec l'option "driving"
   const query = await fetch(
-    `https://api.mapbox.com/directions/v5/mapbox/driving/-122.42,37.78;-77.03,38.91?access_token=pk.eyJ1IjoieWJyZXRvbm5ldCIsImEiOiJjbDVxdW1xc20wMnQ4M2Jtb2huNGpobWNvIn0._-9JZINuKRFNoVICbA3MOw`,
-    // `https://api.mapbox.com/directions/v5/mapbox/driving/${start}${coordsReplace.length > 2 ? `;${coordsReplace};` : ';'}${end}?steps=true&geometries=geojson&overview=full&access_token=${accessToken}`,
+    `https://api.mapbox.com/directions/v5/mapbox/driving/${start}${coordsReplace.length > 2 ? `;${coordsReplace};` : ';'}${end}?steps=true&geometries=geojson&overview=full&access_token=${accessToken}`,
     { method: 'GET' }
   );
   const json = await query.json();

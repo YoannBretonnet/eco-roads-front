@@ -35,8 +35,6 @@ export default function Map() {
   const lng = (stLong + arLong) / 2;
   const lat = (stLat + arLat) / 2;
 
-  console.log ("arLong",arLong);
-
   const bornesArray = pointCoords.data.features.filter((option) => option.borne === true);
   
   useEffect(() => {
@@ -46,7 +44,7 @@ export default function Map() {
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/light-v10',
-      center: [0.8184, 47.653],
+      center: [lng, lat],
       zoom: 6,
       logoPosition: 'bottom-left',
     });
@@ -55,12 +53,10 @@ export default function Map() {
     const start = [stLong, stLat];
     const end = [arLong, arLat];
 
-    console.log ("start =",   start);
-
     // On récupère les coordonnées des points d'intérêt
     const coords = pointCoords.data.features.map((feature) => feature.geometry.coordinates);
     const coordsReplace = JSON.stringify(coords).replaceAll('],[', ';').replace('[[', '').replace(']]', '');
-    
+
     // On trace le trajet
     map.current.on('load', () => {
       getMapRoute(map, start, coordsReplace, end, accessToken);
@@ -99,52 +95,77 @@ export default function Map() {
         },
       });
 
-      // // On ajoute les points d'intérêt
-      // map.current.addSource(
-      //   'interestPoints',
-      //   InterestsPoint,
-      // );
 
-      // map.current.addLayer({
-      //   id: 'interestPoints',
-      //   type: 'symbol',
-      //   source: 'interestPoints',
-      //   layout: {
-      //     'icon-image': '{icon}',
-      //   },
-      // });
+      map.current.addSource('interestPoints', {
+        type: 'geojson',
+        data: {
+            "type": "FeatureCollection",
+            "features": [{
+                "type": "Feature",
+                "properties": {
+                  "title": "Parc Majolan",
+                   "adresse": "12 rue du parc",
+                  "description": "Le parc Majolan est un parc public réalisé dans un style romantique baroque par le paysagiste Louis LeBreton",
+                  "icon": "park-15"
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                      -2.09700167867071,
+                      48.0933167969856
+                    ]
+                }
+            }]
+        }
+    });
+
+      // On ajoute les points d'intérêt
+    //   map.current.addSource(
+    //   'interestPoints',
+    //   InterestsPoint,
+    //   );
+
+    map.current.addLayer({
+        id: 'interestPoints',
+        type: 'symbol',
+        source: 'interestPoints',
+        layout: {
+          'icon-image': '{icon}',
+        },
+      });
+      
     });
 
     // Quand on clique, ça ouvre une pop-up au niveau des coordonnées du point d'intérêt
-    // map.current.on('click', 'interestPoints', (e) => {
-    //   // const coordinates = e.features[0].geometry.coordinates.slice();
-    //   const { coordinates } = e.features[0].geometry;
-    //   const {
-    //     adresse,
-    //     title,
-    //     image,
-    //   } = e.features[0].properties;
+    map.current.on('click', 'interestPoints', (e) => {
+      // const coordinates = e.features[0].geometry.coordinates.slice();
+      const { coordinates } = e.features[0].geometry;
+      const {
+        adresse,
+        title,
+        image,
+      } = e.features[0].properties;
 
-    //   new mapboxgl.Popup()
-    //     .setLngLat(coordinates)
-    //     .setHTML(
-    //       `<div>
-    //     <img crossOrigin="anonymous" src="${DOMPurify.sanitize(image, { USE_PROFILES: { html: false } })}" />
-    //     <h3>${DOMPurify.sanitize(title, { USE_PROFILES: { html: false } })}</h3>
-    //       <p>${DOMPurify.sanitize(adresse, { USE_PROFILES: { html: false } })}</p>
-    //     </div>`,
-    //     )
-    //     .addTo(map.current);
-    // });
+      new mapboxgl.Popup()
+        .setLngLat(coordinates)
+        .setHTML(
+          `<div>
+        <img crossOrigin="anonymous" src="${DOMPurify.sanitize(image, { USE_PROFILES: { html: false } })}" />
+        <h3>${DOMPurify.sanitize(title, { USE_PROFILES: { html: false } })}</h3>
+          <p>${DOMPurify.sanitize(adresse, { USE_PROFILES: { html: false } })}</p>
+        </div>`,
+        )
+        .addTo(map.current);
+    });
 
-    // // On change le pointeur du curseur
-    // map.current.on('mouseenter', 'interestPoints', () => {
-    //   map.current.getCanvas().style.cursor = 'pointer';
-    // });
+    // On change le pointeur du curseur
+    map.current.on('mouseenter', 'interestPoints', () => {
+      map.current.getCanvas().style.cursor = 'pointer';
+    });
 
-    // map.current.on('mouseleave', 'interestPoints', () => {
-    //   map.current.getCanvas().style.cursor = '';
-    // });
+    map.current.on('mouseleave', 'interestPoints', () => {
+      map.current.getCanvas().style.cursor = '';
+    });
 
     // // On ajoute les bornes
     // map.current.on('load', () => {
