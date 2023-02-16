@@ -1,7 +1,7 @@
 [
     
     {
-        "type": "FeatureCollection",
+        "type": "Feature",
         "properties": {
         "image": "https://eco-roads.herokuapp.com/imagez",
         "title": "Parc Majolan",
@@ -17,7 +17,7 @@
 
     
     {
-        "type": "FeatureCollection",
+        "type": "Feature",
         "properties": {
         "image": "https://eco-roads.herokuapp.com/imagez",
         "title": "Ferme de la Noune",

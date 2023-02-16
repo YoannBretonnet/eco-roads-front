@@ -95,37 +95,19 @@ export default function Map() {
         },
       });
 
-
-      map.current.addSource('interestPoints', {
+// On ajoute les points d'intérêt
+      map.current.addSource('interestPoints', 
+      {
         type: 'geojson',
-        data: {
+        data: 
+        {
             "type": "FeatureCollection",
-            "features": [{
-                "type": "Feature",
-                "properties": {
-                  "title": "Parc Majolan",
-                   "adresse": "12 rue du parc",
-                  "description": "Le parc Majolan est un parc public réalisé dans un style romantique baroque par le paysagiste Louis LeBreton",
-                  "icon": "park-15"
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [
-                      -2.09700167867071,
-                      48.0933167969856
-                    ]
-                }
-            }]
+            "features": InterestsPoint
         }
-    });
-
-      // On ajoute les points d'intérêt
-    //   map.current.addSource(
-    //   'interestPoints',
-    //   InterestsPoint,
-    //   );
-
-    map.current.addLayer({
+    },
+    );
+      
+      map.current.addLayer({
         id: 'interestPoints',
         type: 'symbol',
         source: 'interestPoints',

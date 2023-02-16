@@ -23,7 +23,7 @@ const getCategoriesDataMiddlewares = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
-          store.dispatch(getCategoriesDataFail(Object.values(error.response.data)[0]));
+          // store.dispatch(getCategoriesDataFail(Object.values(error.response.data)[0]));
         });
       break;
     case CLEAR_MAP_SETTINGS:

@@ -1,0 +1,77 @@
+[
+
+    { "category" : "Culture",
+        "interestPoints" : [
+        {
+          "type": "Feature",
+          "properties": 
+            {
+            "image": "https://eco-roads.herokuapp.com/imagez",
+            "title": "Parc Majolan",
+                "adresse": "12 rue du parc",
+                "description": "Le parc Majolan est un parc public réalisé dans un style romantique baroque par le paysagiste Louis LeBreton",
+                "icon": "park-15"
+            },
+          "geometry": 
+            {
+              "type": "Point",
+              "coordinates": [-2.09700167867071, 48.0933167969856]
+            }
+        },
+        {
+          "type": "Feature",
+          "properties": 
+            {
+            "image": "https://eco-roads.herokuapp.com/imagez",
+            "title": "Parc Majolan",
+                "adresse": "12 rue du parc",
+                "description": "Le parc Majolan est un parc public réalisé dans un style romantique baroque par le paysagiste Louis LeBreton",
+                "icon": "park-15"
+            },
+          "geometry": 
+            {
+              "type": "Point",
+              "coordinates": [-2.09700167867071, 48.0933167969856]
+            }
+        }
+       ]
+    },
+  
+    { "category" : "Gastronomie",
+    "interestPoints" : [
+        {
+          "type": "Feature",
+          "properties": 
+            {
+            "image": "https://eco-roads.herokuapp.com/imagez",
+            "title": "Parc Majolan",
+                "adresse": "12 rue du parc",
+                "description": "Le parc Majolan est un parc public réalisé dans un style romantique baroque par le paysagiste Louis LeBreton",
+                "icon": "park-15"
+            },
+          "geometry": 
+            {
+              "type": "Point",
+              "coordinates": [-2.09700167867071, 48.0933167969856]
+            }
+        },
+        {
+          "type": "Feature",
+          "properties": 
+            {
+            "image": "https://eco-roads.herokuapp.com/imagez",
+            "title": "Parc Majolan",
+                "adresse": "12 rue du parc",
+                "description": "Le parc Majolan est un parc public réalisé dans un style romantique baroque par le paysagiste Louis LeBreton",
+                "icon": "park-15"
+            },
+          "geometry": 
+            {
+              "type": "Point",
+              "coordinates": [-2.09700167867071, 48.0933167969856]
+            }
+        }
+       ]
+    }
+  
+  ]

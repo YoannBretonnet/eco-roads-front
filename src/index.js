@@ -1,7 +1,8 @@
 // == Import : npm
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { Router  } from 'react-router-dom';
+import { useState, useLayoutEffect } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 // == Import : local
@@ -9,14 +10,34 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import App from 'src/components/App';
 import store from 'src/store';
 
+const CustomRouter = ({ history, ...props }) => {
+  const [state, setState] = useState({
+    action: history.action,
+    location: history.location
+  });
+
+  useLayoutEffect(() => history.listen(setState), [history]);
+
+  return (
+    <Router
+      {...props}
+      location={state.location}
+      navigationType={state.action}
+      navigator={history}
+    />
+  );
+};
+
+import customHistory from './history.js';
+
 // == Render
 // 1. Élément React racine (celui qui contient l'ensemble de l'app)
 //    => crée une structure d'objets imbriqués (DOM virtuel)
 const rootReactElement = (
   <Provider store={store}>
-    <BrowserRouter>
+    <CustomRouter history={customHistory}>
       <App />
-    </BrowserRouter>
+    </CustomRouter>
   </Provider>
 );
 

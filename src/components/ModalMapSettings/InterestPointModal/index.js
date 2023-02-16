@@ -11,6 +11,8 @@ import list from 'src/data/categories.json'
 
 import data from 'src/data/coords.json';
 
+import test from 'src/data/test.json'
+
 // == Style
 import './styles.scss';
 
@@ -43,6 +45,7 @@ function InterestPointModal({ reducerRoute, updatePage }) {
   const isErrorMax = selected.length > 3;
   const isErrorMin = selected.length < 1;
   const modalElement = 'interestPointModal';
+
   return (
     <ModalElement
       dispatchCall={openCloseInterestPointModal}
@@ -56,7 +59,7 @@ function InterestPointModal({ reducerRoute, updatePage }) {
           (
             (event) => {
           event.preventDefault(); 
-          dispatch(getRouteSuccess(data, navigate));
+          dispatch(getRoute(data, navigate));
             })
         }
         // onSubmit={((event) => {
