@@ -26,14 +26,14 @@ const connectUser = (store) => (next) => (action) => {
           'Content-Type': 'application/json'
         },
         data: {
-           categories: state.mapSettings.interestPointModal.selected.map((category) => category.name),
+          "categories": ["Culture", "Gastronomie"]
+          //  "categories":" state.mapSettings.interestPointModal.selected.map((category) => "category.name")"
         },
       };
       axios(configGetInterestPoints)
-        .then((response ) => {
-          // .then((response) => {
-          store.dispatch(getRouteSuccess(response));
-          console.log('route success');
+        .then(({data} ) => {
+          // console.log(data)
+          store.dispatch(getRouteSuccess(data));
         })
         .catch((error) => {
           // store.dispatch(getRouteFail(Object.values(error.response.data)[0]));
@@ -41,9 +41,9 @@ const connectUser = (store) => (next) => (action) => {
         });
       break;
     case GET_ROUTE_SUCCESS:
+      next(action);
       store.dispatch(openCloseInterestPointModal());
       history.replace('/map');
-      next(action);
       break;
     default:
       return next(action);

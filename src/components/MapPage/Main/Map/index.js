@@ -54,8 +54,12 @@ export default function Map() {
     const end = [arLong, arLat];
 
     // On récupère les coordonnées des points d'intérêt
-    const coords = pointCoords.data.features.map((feature) => feature.geometry.coordinates);
-    const coordsReplace = JSON.stringify(coords).replaceAll('],[', ';').replace('[[', '').replace(']]', '');
+    
+    const coords = pointCoords.data.features.map((category) => category.features.map((feature) => feature.geometry.coordinates));
+    const coordsReplace = JSON.stringify(coords).replaceAll('],[', ';').replace('[[', '').replace(']]', '').replace(']', '').replace('[', '').replace('];', ';').replace(';[', ';').replace('];[', ';').replace('];', ';').replace(']', '');
+
+    console.log ("coords", coords);
+    console.log ("coordsReplace", coordsReplace);
 
     // On trace le trajet
     map.current.on('load', () => {
