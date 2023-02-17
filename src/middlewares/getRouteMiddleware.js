@@ -26,8 +26,7 @@ const connectUser = (store) => (next) => (action) => {
           'Content-Type': 'application/json'
         },
         data: {
-          "categories": ["Culture", "Gastronomie"]
-          //  "categories":" state.mapSettings.interestPointModal.selected.map((category) => "category.name")"
+          "categories": state.mapSettings.interestPointModal.selected.map((category) => category.name)
         },
       };
       axios(configGetInterestPoints)

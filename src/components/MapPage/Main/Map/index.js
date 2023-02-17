@@ -9,10 +9,10 @@ import Sidebar from '../Sidebar';
 // import styles and icons
 import './styles.scss';
 import myImage from 'src/assets/images/borne.png';
-import InterestsPoint from 'src/data/coords.json'
 
 // import data
 import { accessToken } from 'mapbox-gl';
+import coords from 'src/data/coords2.json'
 
 // import mapBox token
 accessToken = 'pk.eyJ1IjoieWJyZXRvbm5ldCIsImEiOiJjbDVxdXliOHQweHV3M2tvM2hlMG41cXFwIn0.K1s56VTf9EAsagytjhRKSw';
@@ -22,12 +22,6 @@ export default function Map() {
   const map = useRef(null);
   const isConnected = useSelector((state) => state.auth.isConnected);
   const pointCoords = useSelector((state) => state.mapData.pointCoords);
-  // const {
-  //   stLong,
-  //   stLat,
-  //   arLong,
-  //   arLat,
-  // } = useSelector((state) => state.mapData.startEndCoords);
   const stLong = useSelector((state) => state.mapSettings.localisationSettingsModal.DepartSelected.Long);
   const stLat = useSelector((state) => state.mapSettings.localisationSettingsModal.DepartSelected.Lat);
   const arLong = useSelector((state) => state.mapSettings.localisationSettingsModal.ArrivSelected.Long);
@@ -35,7 +29,15 @@ export default function Map() {
   const lng = (stLong + arLong) / 2;
   const lat = (stLat + arLat) / 2;
 
+  const InterestPoints = pointCoords.data.features.map((category) => category.features);
+  const InterestPointsReplace = JSON.stringify(InterestPoints).replaceAll('[[', '[').replaceAll(']]', ']').replaceAll('}}', '}').replaceAll('],[', ',').replaceAll(']}', ']}}');
+  const InterestPointsObject = JSON.parse(InterestPointsReplace);
+  console.log (InterestPointsObject, typeof InterestPointsObject );
+
   const bornesArray = pointCoords.data.features.filter((option) => option.borne === true);
+
+  const coords2 = coords;
+  console.log (coords2, typeof coords2);
   
   useEffect(() => {
     map.current = null;
@@ -56,12 +58,9 @@ export default function Map() {
     // On récupère les coordonnées des points d'intérêt
     
     const coords = pointCoords.data.features.map((category) => category.features.map((feature) => feature.geometry.coordinates));
-    const coordsReplace = JSON.stringify(coords).replaceAll('],[', ';').replace('[[', '').replace(']]', '').replace(']', '').replace('[', '').replace('];', ';').replace(';[', ';').replace('];[', ';').replace('];', ';').replace(']', '');
+    const coordsReplace = JSON.stringify(coords).replaceAll('],[', ';').replace('[[', '').replace(']]', '').replace(']', '').replace('[', '').replace('];', ';').replaceAll(';[', ';').replace('];[', ';').replace('];', ';').replace(']', '');
 
-    console.log ("coords", coords);
-    console.log ("coordsReplace", coordsReplace);
-
-    // On trace le trajet
+      // On trace le trajet
     map.current.on('load', () => {
       getMapRoute(map, start, coordsReplace, end, accessToken);
 
@@ -106,7 +105,7 @@ export default function Map() {
         data: 
         {
             "type": "FeatureCollection",
-            "features": InterestsPoint
+            "features": InterestPointsObject
         }
     },
     );
@@ -197,7 +196,7 @@ export default function Map() {
     //   // Load a local image
     // });
     
-  }, [InterestsPoint]);
+  }, [InterestPoints]);
 
   return (
     <section className="map">
