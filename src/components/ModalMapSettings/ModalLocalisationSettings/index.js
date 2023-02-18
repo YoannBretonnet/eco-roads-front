@@ -74,7 +74,7 @@ function ModalLocalisationSettings({ reducerRoute, updatePage }) {
       modalElement={modalElement}
       reducerRoute={reducerRoute}
     >
-      <h1 className="modal-title">Définissez votre trajet</h1>
+      <h1 className="modal-title">Définissez votre trajet :</h1>
       <form
         className="modal-form-localisation"
         onSubmit={((event) => {

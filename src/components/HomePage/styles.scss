@@ -1,20 +1,20 @@
 #App {
-  background-image: url('./mapTransparency.svg');
-  background-position: top -20px left -40px;
+  background-image: url('../../assets/images/road_mobile.jpg');
+  background-position: top 68px left -49px;
   background-repeat: no-repeat;
   background-size: 127% 50vh;
 }
 
 #App-Desktop {
-  background-image: url('./mapTransparency.svg');
+  background-image: url('../../assets/images/road_desktop.jpg');
   background-repeat: no-repeat;
-  background-position: top -20% right -15%;
-  background-size: 150% 60%;
+  background-position: top 86px left 0px;
+  background-size: cover;
+
 }
 
 #App-Tablet {
-  background-image: url('./mapTransparency.svg');
+  background-image: url('../../assets/images/road_desktop.jpg');
   background-repeat: no-repeat;
-  background-position: top -223px left -193px;
-  background-size: 167% 80vh;
+
 }

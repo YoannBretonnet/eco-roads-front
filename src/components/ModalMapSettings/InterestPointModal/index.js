@@ -9,10 +9,6 @@ import { useNavigate } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 import list from 'src/data/categories.json'
 
-import data from 'src/data/coords.json';
-
-import test from 'src/data/test.json'
-
 // == Style
 import './styles.scss';
 
@@ -36,7 +32,6 @@ import ModalElement from 'src/components/ModalElement';
 // == Composant
 function InterestPointModal({ reducerRoute, updatePage }) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const selected = useSelector((state) => state.mapSettings.interestPointModal.selected);
   const { error } = useSelector((state) => state.mapSettings.categoriesData);
   // const { error, list } = useSelector((state) => state.mapSettings.categoriesData);
@@ -52,14 +47,14 @@ function InterestPointModal({ reducerRoute, updatePage }) {
       modalElement={modalElement}
       reducerRoute={reducerRoute}
     >
-      <h1 className="modal-title">Point d'intérêts</h1>
+      <h1 className="modal-title">Choisissez vos point d'intérêts :</h1>
       <form
         className="modal-form-connection"
         onSubmit={
           (
             (event) => {
           event.preventDefault(); 
-          dispatch(getRoute(data, navigate));
+          dispatch(getRoute());
             })
         }
         // onSubmit={((event) => {

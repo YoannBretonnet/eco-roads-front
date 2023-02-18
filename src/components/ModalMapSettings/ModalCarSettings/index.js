@@ -44,7 +44,8 @@ function ModalCarSettings({ reducerRoute, updatePage }) {
       modalElement={modalElement}
       reducerRoute={reducerRoute}
     >
-      <h1 className="modal-title">Quel est votre véhicule&nbsp;?</h1>
+      <h1 className="modal-title">Sélectionnez votre véhicule :</h1>
+      
       <form
         className="modal-form-connection"
         onSubmit={((event) => {
@@ -98,6 +99,7 @@ function ModalCarSettings({ reducerRoute, updatePage }) {
           <BiChevronRight size="8vh" />
         </IconButton>
       </form>
+      
     </ModalElement>
   );
 }

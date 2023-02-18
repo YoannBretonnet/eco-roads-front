@@ -33,9 +33,9 @@ function App() {
   const isConnected = useSelector((state) => state.auth.isConnected);
   const isMapGenerated = useSelector((state) => state.mapData.status.isMapGenerated);
   useEffect(() => {
-    dispatch(getVehiclesData());
-    dispatch(getCategoriesData());
-    dispatch(getTeamData());
+    // dispatch(getVehiclesData());
+    // dispatch(getCategoriesData());
+    // dispatch(getTeamData());
   }, []);
   return (
     <ThemeProvider theme={theme}>

@@ -41,7 +41,7 @@ function Main() {
   // display: 'flex', flexDirection: 'row-reverse', margin: '10vh 0 15vh'
   return (
     <Box component="main" id="main-HomePage">
-      {
+      {/* {
         matches ? (
           <Box component="section" sx={{ margin: '32vh 1.5vh 0' }}>
             <h1 className="main-title">
@@ -58,7 +58,7 @@ function Main() {
             </p>
           </Box>
         )
-      }
+      } */}
       {matches ? <CarouselComponent /> : <StepsComponent />}
       {matches ? (
         <Box

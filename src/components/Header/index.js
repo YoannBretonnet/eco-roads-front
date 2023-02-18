@@ -25,7 +25,7 @@ import {
   BiMap,
   BiBookmark,
 } from 'react-icons/bi';
-import styles from './IconSlider.module.scss';
+import styles from './styles.scss';
 
 // == Composant
 function Header() {
@@ -47,7 +47,16 @@ function Header() {
           display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '2vh',
         }}
       >
-        {!matches && (
+        <Box component="section" sx={{ margin: '2vh 1.5vh 0' }}>
+            <h1 className="main-title">
+              E-co Roads
+            </h1>
+            <p className="main-accroche">
+              Découvrez votre région en toute sérénité au volant de votre voiture électrique
+            </p>
+          </Box>
+      
+        {/* {!matches && (
         <Tooltip
           title="Page d'accueil"
           sx={{ position: 'absolute', top: '0', left: '0' }}
@@ -62,9 +71,9 @@ function Header() {
             </h1>
           </NavLink>
         </Tooltip>
-        )}
+        )} */}
         <Fab variant="extended" aria-label="add" sx={{ margin: 'auto', gap: '1vh', fontWeight: 'bold' }} onClick={(() => dispatch(openCloseCarModal()))}>
-          Véhicule | Localisation | Intérêts
+          Créez votre trajet personnalisé!
           <BiSearch size="3.1vh" />
         </Fab>
         <Box component="nav" sx={{ display: 'flex', justifyContent: 'center', marginTop: '1vh' }}>

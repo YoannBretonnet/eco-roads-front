@@ -5,6 +5,7 @@ import DOMPurify from 'dompurify';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import getMapRoute from './getMapRoute';
 import Sidebar from '../Sidebar';
+import ChoicesPanel from './choicesPanel';
 
 // import styles and icons
 import './styles.scss';
@@ -12,7 +13,6 @@ import myImage from 'src/assets/images/borne.png';
 
 // import data
 import { accessToken } from 'mapbox-gl';
-import coords from 'src/data/coords2.json'
 
 // import mapBox token
 accessToken = 'pk.eyJ1IjoieWJyZXRvbm5ldCIsImEiOiJjbDVxdXliOHQweHV3M2tvM2hlMG41cXFwIn0.K1s56VTf9EAsagytjhRKSw';
@@ -32,13 +32,14 @@ export default function Map() {
   const InterestPoints = pointCoords.data.features.map((category) => category.features);
   const InterestPointsReplace = JSON.stringify(InterestPoints).replaceAll('[[', '[').replaceAll(']]', ']').replaceAll('}}', '}').replaceAll('],[', ',').replaceAll(']}', ']}}');
   const InterestPointsObject = JSON.parse(InterestPointsReplace);
-  console.log (InterestPointsObject, typeof InterestPointsObject );
+
+  // On récupère les coordonnées des points d'intérêt 
+  const coords = pointCoords.data.features.map((category) => category.features.map((feature) => feature.geometry.coordinates));
+  const coordsReplace = JSON.stringify(coords).replaceAll('],[', ';').replace('[[', '').replace(']]', '').replace(']', '').replace('[', '').replace('];', ';').replaceAll(';[', ';').replace('];[', ';').replace('];', ';').replace(']', '');
+
 
   const bornesArray = pointCoords.data.features.filter((option) => option.borne === true);
 
-  const coords2 = coords;
-  console.log (coords2, typeof coords2);
-  
   useEffect(() => {
     map.current = null;
     // on inititalise la map, centrée entre le point de départ et d'arrivée
@@ -55,11 +56,7 @@ export default function Map() {
     const start = [stLong, stLat];
     const end = [arLong, arLat];
 
-    // On récupère les coordonnées des points d'intérêt
     
-    const coords = pointCoords.data.features.map((category) => category.features.map((feature) => feature.geometry.coordinates));
-    const coordsReplace = JSON.stringify(coords).replaceAll('],[', ';').replace('[[', '').replace(']]', '').replace(']', '').replace('[', '').replace('];', ';').replaceAll(';[', ';').replace('];[', ';').replace('];', ';').replace(']', '');
-
       // On trace le trajet
     map.current.on('load', () => {
       getMapRoute(map, start, coordsReplace, end, accessToken);
@@ -201,6 +198,7 @@ export default function Map() {
   return (
     <section className="map">
       <aside ref={mapContainer} className="map-container" />
+      <ChoicesPanel />
       {/* {
             !isConnected ? (
               <Sidebar
