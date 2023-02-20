@@ -5,7 +5,6 @@ import DOMPurify from 'dompurify';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import getMapRoute from './getMapRoute';
 import Sidebar from '../Sidebar';
-import ChoicesPanel from './choicesPanel';
 
 // import styles and icons
 import './styles.scss';
@@ -198,7 +197,7 @@ export default function Map() {
   return (
     <section className="map">
       <aside ref={mapContainer} className="map-container" />
-      <ChoicesPanel />
+      {/* <ChoicesPanel /> */}
       {/* {
             !isConnected ? (
               <Sidebar

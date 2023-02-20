@@ -25,7 +25,7 @@ import {
   BiMap,
   BiBookmark,
 } from 'react-icons/bi';
-import styles from './styles.scss';
+import styles from './styles.scss?inline';
 
 // == Composant
 function Header() {
@@ -72,14 +72,14 @@ function Header() {
           </NavLink>
         </Tooltip>
         )} */}
-        <Fab variant="extended" aria-label="add" sx={{ margin: 'auto', gap: '1vh', fontWeight: 'bold' }} onClick={(() => dispatch(openCloseCarModal()))}>
+        <Fab variant="extended" aria-label="add" sx={{ margin: '2vh', gap: '1vh', fontWeight: 'bold', }} onClick={(() => dispatch(openCloseCarModal()))}>
           Créez votre trajet personnalisé!
           <BiSearch size="3.1vh" />
         </Fab>
         <Box component="nav" sx={{ display: 'flex', justifyContent: 'center', marginTop: '1vh' }}>
           <Tooltip title="Choix véhicule">
             <IconButton
-              className={isCarOpen ? styles.icon : ''}
+              className={isCarOpen ? "icon" : ''}
               onClick={(() => dispatch(openCloseCarModal()))}
             >
               <BiCar size={args.size} />
@@ -87,7 +87,7 @@ function Header() {
           </Tooltip>
           <Tooltip title="Adresse">
             <IconButton
-              className={isLocalisationOpen ? styles.icon : ''}
+              className={isLocalisationOpen ? "icon" : ''}
               onClick={(() => dispatch(openCloseLocalisationModal()))}
             >
               <BiMap size={args.size} />
@@ -95,7 +95,7 @@ function Header() {
           </Tooltip>
           <Tooltip title="Point d'Intérêts">
             <IconButton
-              className={isInterestPointOpen ? styles.icon : ''}
+              className={isInterestPointOpen ? "icon" : ''}
               onClick={(() => dispatch(openCloseInterestPointModal()))}
             >
               <BiBookmark size={args.size} />
