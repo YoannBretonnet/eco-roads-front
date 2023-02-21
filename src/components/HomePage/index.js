@@ -39,7 +39,7 @@ function HomePage() {
       <Header />
       <Main />
       <Footer />
-      </Box>
+    </Box>
   );
 }
 
