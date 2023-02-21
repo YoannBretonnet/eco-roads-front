@@ -1,15 +1,15 @@
 #App {
   background-image: url('../../assets/images/road_mobile.jpg');
-  background-position: top 68px left -49px;
+  background-position: top 162px left 0px;
   background-repeat: no-repeat;
-  background-size: 127% 50vh;
+  background-size: contain;
 }
 
 #App-Desktop {
   background-image: url('../../assets/images/road_desktop.jpg');
   background-repeat: no-repeat;
   background-position: top 86px left 0px;
-  background-size: cover;
+  background-size: contain;
 
 }
 

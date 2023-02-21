@@ -25,6 +25,7 @@ import {
   BiMap,
   BiBookmark,
 } from 'react-icons/bi';
+
 import styles from './styles.scss?inline';
 
 // == Composant
@@ -44,7 +45,7 @@ function Header() {
       <Box
         component="header"
         sx={{
-          display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '2vh',
+          display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '0.5vh',
         }}
       >
         <Box component="section" sx={{ margin: '2vh 1.5vh 0' }}>
@@ -56,23 +57,7 @@ function Header() {
             </p>
           </Box>
       
-        {/* {!matches && (
-        <Tooltip
-          title="Page d'accueil"
-          sx={{ position: 'absolute', top: '0', left: '0' }}
-        >
-          <NavLink
-            key="homePage"
-            className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
-            to="/"
-          >
-            <h1 className="main-title profile-page-header-title">
-              E-co Roads
-            </h1>
-          </NavLink>
-        </Tooltip>
-        )} */}
-        <Fab variant="extended" aria-label="add" sx={{ margin: '2vh', gap: '1vh', fontWeight: 'bold', }} onClick={(() => dispatch(openCloseCarModal()))}>
+        <Fab variant="extended" aria-label="add" sx={{ display: 'inline', ml: 'auto', mr: 'auto', mt : '2vh', gap: '1vh', fontWeight: 'bold', }} onClick={(() => dispatch(openCloseCarModal()))}>
           Créez votre trajet personnalisé!
           <BiSearch size="3.1vh" />
         </Fab>

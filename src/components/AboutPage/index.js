@@ -5,8 +5,6 @@ import './styles.scss';
 import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
 import Main from 'src/components/AboutPage/Main';
-import ModalConnection from 'src/components/ModalAuthentification/ModalConnection';
-import ModalAccountCreation from 'src/components/ModalAuthentification/ModalAccountCreation';
 
 import {
   Box,
@@ -30,13 +28,7 @@ function AboutPage() {
       <Header />
       <Main />
       <Footer />
-      <ModalConnection
-        reducerRoute={reducerRoute}
-      />
-      <ModalAccountCreation
-        reducerRoute={reducerRoute}
-      />
-    </Box>
+       </Box>
   );
 }
 

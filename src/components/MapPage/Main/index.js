@@ -16,21 +16,13 @@ import {
   BiDotsVerticalRounded,
 } from 'react-icons/bi';
 
-import { openCloseConnectionModal } from 'src/actions/authentification';
-import { openCloseMenu } from 'src/actions/usability';
-
-
-import MenuIsConnnected from 'src/components/MenuIsConnnected';
 import Map from './Map';
-// import Sidebar from './Sidebar';
 
 // == Composant
 function Main() {
   const dispatch = useDispatch();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('tablet'));
-  const isConnected = useSelector((state) => state.auth.isConnected);
-  const { isOpen } = useSelector((state) => state.usability.menu);
   const args = {
     size: 6,
   };
@@ -44,17 +36,6 @@ function Main() {
   return (
     <Box component="main" id="main-HomePage">
       <Map />
-      {/* {
-            !isConnected ? (
-              <Sidebar
-                text="Pour sauvegarder votre trajet, connectez-vous"
-              />
-            ) : (
-              <Sidebar
-                text="Sauvegardez ce trajet dans vos favoris"
-              />
-            )
-        } */}
       {matches ? (
         <Box
           component="section"
@@ -63,28 +44,17 @@ function Main() {
           }}
         >
           {
-        !isConnected ? (
-          <IconButton
-            onClick={() => dispatch(openCloseConnectionModal())}
-          >
-            <BiUser size={`${args.size}vh`} />
-          </IconButton>
-        ) : (
+     (
           <>
             <Tooltip title="Settings">
               <IconButton
                 onClick={handleClick}
-                aria-controls={isOpen ? 'account-menu' : undefined}
                 aria-haspopup="true"
               >
                 <BiDotsVerticalRounded size={`${args.size}vh`} />
               </IconButton>
             </Tooltip>
-            <MenuIsConnnected
-              inputMenu={inputMenu}
-              setinputMenu={setinputMenu}
-            />
-          </>
+              </>
         )
       }
         </Box>
@@ -96,28 +66,17 @@ function Main() {
           }}
         >
           {
-        !isConnected ? (
-          <IconButton
-            onClick={() => dispatch(openCloseConnectionModal())}
-          >
-            <BiUser size={`${args.size}vh`} />
-          </IconButton>
-        ) : (
+            (
           <>
             <Tooltip title="Paramètre">
               <IconButton
                 onClick={handleClick}
-                aria-controls={isOpen ? 'account-menu' : undefined}
                 aria-haspopup="true"
               >
                 <BiDotsVerticalRounded size={`${args.size}vh`} />
               </IconButton>
             </Tooltip>
-            <MenuIsConnnected
-              inputMenu={inputMenu}
-              setinputMenu={setinputMenu}
-            />
-          </>
+              </>
         )
       }
         </Box>

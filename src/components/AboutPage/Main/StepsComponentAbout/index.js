@@ -6,9 +6,10 @@ import './styles.scss';
 
 import { Paper, Box } from '@mui/material';
 
+import team from 'src/data/team.json'
+
 // == Composant
 function StepsComponent() {
-  const team = useSelector((state) => state.usability.team);
   const args = {
     squareSize: '25vh',
   };

@@ -19,7 +19,6 @@ accessToken = 'pk.eyJ1IjoieWJyZXRvbm5ldCIsImEiOiJjbDVxdXliOHQweHV3M2tvM2hlMG41cX
 export default function Map() {
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const isConnected = useSelector((state) => state.auth.isConnected);
   const pointCoords = useSelector((state) => state.mapData.pointCoords);
   const stLong = useSelector((state) => state.mapSettings.localisationSettingsModal.DepartSelected.Long);
   const stLat = useSelector((state) => state.mapSettings.localisationSettingsModal.DepartSelected.Lat);
@@ -197,22 +196,6 @@ export default function Map() {
   return (
     <section className="map">
       <aside ref={mapContainer} className="map-container" />
-      {/* <ChoicesPanel /> */}
-      {/* {
-            !isConnected ? (
-              <Sidebar
-                text="Pour sauvegarder votre prochain trajet, connectez-vous"
-                intLength={InterestsPoint.data.features.length}
-                bornLength={bornesArray.length}
-              />
-            ) : (
-              <Sidebar
-                text="Sauvegardez ce trajet dans vos favoris"
-                intLength={InterestsPoint.data.features.length}
-                bornLength={bornesArray.length}
-              />
-            )
-        } */}
     </section>
   );
 }

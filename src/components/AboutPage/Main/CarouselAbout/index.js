@@ -16,7 +16,6 @@ import {
 
 // == Composant
 function CarouselComponent() {
-  const team = useSelector((state) => state.usability.team);
   const args = {
     size: '40vh',
   };

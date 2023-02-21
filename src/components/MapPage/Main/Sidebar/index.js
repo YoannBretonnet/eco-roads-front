@@ -9,7 +9,6 @@ import {
 
 // import data
 import { useSelector, useDispatch } from 'react-redux';
-import { openCloseConnectionModal } from 'src/actions/authentification';
 
 function sidebar({ text, intLength, bornLength }) {
   const dispatch = useDispatch();
