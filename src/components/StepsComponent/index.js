@@ -18,7 +18,7 @@ function StepsComponent() {
     {
       step: 'Etape 2',
       description: 'Générez votre trajet',
-      icon: 'BiBot',
+      icon: 'BiWrench',
     },
     {
       step: 'Etape 3',
