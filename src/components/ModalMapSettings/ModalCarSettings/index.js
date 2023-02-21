@@ -47,7 +47,7 @@ function ModalCarSettings({ reducerRoute, updatePage }) {
       <h1 className="modal-title">Sélectionnez votre véhicule :</h1>
       
       <form
-        className="modal-form-connection"
+        className="modal-form-cars"
         onSubmit={((event) => {
           event.preventDefault();
           dispatch(openCloseCarModal());
