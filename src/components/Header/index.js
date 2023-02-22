@@ -45,23 +45,15 @@ function Header() {
       <Box
         component="header"
         sx={{
-          display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '0.5vh',
+          display: 'flex', flexDirection: 'row', justifyContent: 'center', marginTop: '0.5vh',
         }}
       >
-        <Box component="section" sx={{ margin: '2vh 1.5vh 0' }}>
-            <h1 className="main-title">
-              E-co Roads
-            </h1>
-            <p className="main-accroche">
-              Découvrez votre région en toute sérénité au volant de votre voiture électrique
-            </p>
-          </Box>
-      
+           {matches ? ( 
+            <Box component="section" sx={{ margin: '8vh 1.5vh 0' }}>
         <Fab variant="extended" aria-label="add" sx={{ display: 'inline', ml: 'auto', mr: 'auto', mt : '2vh', gap: '1vh', fontWeight: 'bold', }} onClick={(() => dispatch(openCloseCarModal()))}>
-          Créez votre trajet personnalisé!
-          <BiSearch size="3.1vh" />
-        </Fab>
-        <Box component="nav" sx={{ display: 'flex', justifyContent: 'center', marginTop: '1vh' }}>
+          Créez votre trajet personnalisé !
+          </Fab>
+          <Box component="nav" sx={{ display: 'flex', justifyContent: 'center', marginTop: '0.5vh' }}>
           <Tooltip title="Choix véhicule">
             <IconButton
               className={isCarOpen ? "icon" : ''}
@@ -87,6 +79,43 @@ function Header() {
             </IconButton>
           </Tooltip>
         </Box>
+        
+        </Box>
+          ) : (
+            <Box component="section" sx={{ margin: '2vh 1.5vh 0' }}>
+            <Fab variant="extended" aria-label="add" sx={{ display: 'inline', ml: 'auto', mr: 'auto', mt : '2vh', fontWeight: 'bold', fontSize: '19px'}} onClick={(() => dispatch(openCloseCarModal()))}>
+          Créez votre trajet personnalisé !
+          </Fab>
+          <Box component="nav" sx={{ display: 'flex', justifyContent: 'center', marginTop: '2vh' }}>
+          <Tooltip title="Choix véhicule">
+            <IconButton
+              className={isCarOpen ? "icon" : ''}
+              onClick={(() => dispatch(openCloseCarModal()))}
+            >
+              <BiCar size={args.size} />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Adresse">
+            <IconButton
+              className={isLocalisationOpen ? "icon" : ''}
+              onClick={(() => dispatch(openCloseLocalisationModal()))}
+            >
+              <BiMap size={args.size} />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Point d'Intérêts">
+            <IconButton
+              className={isInterestPointOpen ? "icon" : ''}
+              onClick={(() => dispatch(openCloseInterestPointModal()))}
+            >
+              <BiBookmark size={args.size} />
+            </IconButton>
+          </Tooltip>
+        </Box>
+       
+        </Box>
+          )
+          }
       </Box>
       <ModalCarSettings
         reducerRoute={reducerRoute}

@@ -10,11 +10,10 @@ import {
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import {
   BiUser,
-  BiDotsVerticalRounded,
 } from 'react-icons/bi';
 
 import CarouselComponent from 'src/components/Carousel';
@@ -35,29 +34,37 @@ function Main() {
   };
   // display: 'flex', flexDirection: 'row-reverse', margin: '10vh 0 15vh'
   return (
+    
     <Box component="main" id="main-HomePage">
+  
+       <Box component="section" sx={{ margin: '2vh 1.5vh 0', position: 'fixed', left: '0', bottom: 'unset', top: '0', width: 'fit-content', }}>
+            <h1 className="main-title">
+              E-co Roads
+            </h1>
+      </Box>
+      
+
        {matches ? <CarouselComponent /> : <StepsComponent />}
       {matches ? (
         <Box
           component="section"
           sx={{
-            position: 'fixed', right: '0', bottom: '0', top: 'unset', width: 'fit-content',
+            position: 'fixed', right: '0', bottom: 'unset', top: '0', width: 'fit-content',
           }}
         >
           {
-  
           <>
             <Tooltip title="Settings">
               <IconButton
                 onClick={handleClick}
                 aria-haspopup="true"
               >
-                <BiDotsVerticalRounded size={`${args.size}vh`} />
+                <BiUser size={`${args.size}vh`} />
               </IconButton>
             </Tooltip>
                  </>
       }
-        </Box>
+      </Box>
       ) : (
         <Box
           component="section"
@@ -67,14 +74,7 @@ function Main() {
         >
           {
           <>
-            <Tooltip title="Paramètre">
-              <IconButton
-                onClick={handleClick}
-                aria-haspopup="true"
-              >
-                <BiDotsVerticalRounded size={`${args.size}vh`} />
-              </IconButton>
-            </Tooltip>
+            <p>Connexion</p>
               </>
       }
         </Box>

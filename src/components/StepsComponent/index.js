@@ -22,7 +22,7 @@ function StepsComponent() {
     },
     {
       step: 'Etape 3',
-      description: 'Laissez vous porter',
+      description: 'Laissez vous guider',
       icon: 'BiMapAlt',
     },
   ];
@@ -31,21 +31,21 @@ function StepsComponent() {
   };
 
   return (
-    <Box component="section" sx={{ margin: '2vh auto 0 auto', width: 'fit-content', height: 'fit-content' }}>
-      <h2 className="steps-title">
-        Comment ça marche ?
+    <Box component="section" sx={{ margin: '16vh auto 0 auto', width: 'fit-content', height: 'fit-content' }}>
+      <h2 className='carousel-title'>
+      Partez à la découverte de votre région au volant de votre voiture électrique
       </h2>
       <Box component="article" sx={{ margin: 'auto', width: 'fit-content', height: 'fit-content', display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '7vw'}}>
         {
           items.map((item, i) => (
-            <div class="flip-card" key={i}>
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
+            <div className="flip-card" key={i}>
+            <div className="flip-card-inner">
+              <div className="flip-card-front">
               <Icon iconSelector={item.icon} />
                   <h3 className="steps-step">{DOMPurify.sanitize(item.step, { USE_PROFILES: { html: false } })}</h3>
-  //             <p className="steps-content">{DOMPurify.sanitize(item.description, { USE_PROFILES: { html: false } })}</p>
+                  <p className="steps-content">{DOMPurify.sanitize(item.description, { USE_PROFILES: { html: false } })}</p>
               </div>
-            <div class="flip-card-back">
+            <div className="flip-card-back">
               <p>Architect & Engineer</p> 
               <p>We love that guy</p>
           </div>

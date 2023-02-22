@@ -5,7 +5,7 @@ import DOMPurify from 'dompurify';
 
 
 import Carousel from 'react-material-ui-carousel';
-import { Paper, Box } from '@mui/material';
+import { Box } from '@mui/material';
 
 import {
   BiChevronLeft,
@@ -28,17 +28,19 @@ function CarouselComponent() {
     },
     {
       step: 'Etape 3',
-      description: 'Laissez vous porter',
+      description: 'Laissez vous guider',
       icon: 'BiMapAlt',
     },
   ];
   const args = {
-    squareSize: '25vh',
+    squareSize: '45vh',
   };
   return (
-    <Box component="section" sx={{ margin: '2vh auto 0 auto', width: 'fit-content', height: 'fit-content' }}>
+    <Box component="section" sx={{ margin: '4vh auto 0 auto', width: 'fit-content', height: 'fit-content' }}>
       <h2 className='carousel-title'>
-        Comment ça marche ?
+     Partez à la découverte de votre région
+      <br /> 
+      au volant de votre voiture électrique
       </h2>
       <Carousel
         navButtonsAlwaysVisible
@@ -56,23 +58,26 @@ function CarouselComponent() {
             backgroundColor: 'transparent',
             color: 'black',
             height: 'fit-content',
-            margin: '0',
+            margin: '-10px',
             padding: '0',
           },
         }}
       >
         {
           items.map((item, i) => (
-            <Paper
-              key={i}
-              sx={{
-                width: args.squareSize, height: args.squareSize, background: 'transparent', border: '0.4vh solid black', borderRadius: '10%', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '10% 0 0',
-              }}
-            >
+            <div className="flip-card-carousel" key={i}>
+            <div className="flip-card-inner-carousel">
+              <div className="flip-card-front-carousel">
               <Icon iconSelector={item.icon} />
-              <h3 className="carousel-step">{DOMPurify.sanitize(item.step, { USE_PROFILES: { html: false } })}</h3>
-              <p className="carousel-content">{DOMPurify.sanitize(item.description, { USE_PROFILES: { html: false } })}</p>
-            </Paper>
+                  <h3 className="steps-step">{DOMPurify.sanitize(item.step, { USE_PROFILES: { html: false } })}</h3>
+                  <p className="steps-content">{DOMPurify.sanitize(item.description, { USE_PROFILES: { html: false } })}</p>
+              </div>
+            <div className="flip-card-back-carousel">
+              <p>Architect & Engineer</p> 
+              <p>We love that guy</p>
+          </div>
+        </div>
+      </div>
           ))
         }
       </Carousel>
