@@ -17,7 +17,7 @@ import {
 import { BiChevronRight, BiCheck } from 'react-icons/bi';
 
 import {
-  openCloseConnectionModal, changeInputValue, connectUser,
+  openCloseConnectionModal, changeInputValue, submitLogin,
 } from 'src/actions/authentification';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -45,7 +45,7 @@ function ModalConnection({ reducerRoute }) {
         className="modal-form-connection"
         onSubmit={((event) => {
           event.preventDefault();
-          dispatch(connectUser());
+          dispatch(submitLogin());
         })}
       >
         <TextField
@@ -92,6 +92,7 @@ ModalConnection.defaultProps = {
     updatePage: false,
   };
   
+
 ModalConnection.propTypes = {
   reducerRoute: PropTypes.string.isRequired,
   updatePage: PropTypes.bool,

@@ -1,9 +1,10 @@
 import {
     OPEN_CLOSE_CONNECTION_MODAL,
     CHANGE_INPUT_VALUE,
-    CONNECT_USER,
-    CONNECT_USER_FAIL,
-    CONNECT_USER_SUCCESS,
+    SUBMIT_LOGIN, 
+    SUBMIT_LOGIN_SUCCESS, 
+    SUBMIT_LOGIN_FAILURE, 
+    SUBMIT_DECONNEXION
   } from 'src/actions/authentification';
   
   export const initialState = {
@@ -11,6 +12,7 @@ import {
       isOpen: false,
       emailValue: '',
       passwordValue: '',
+      nickname: '',
       error: {
         isError: false,
         message: undefined,
@@ -84,6 +86,46 @@ import {
             isLoading: false,
           },
         };
+        case SUBMIT_LOGIN:
+          return {
+              ...state,
+              settings: {
+                  ...state.settings,
+                  isLoading: true,
+              }
+           };
+      case SUBMIT_LOGIN_SUCCESS:
+          return {
+              ...state,
+              nickname: action.nickname,
+              settings: {
+                  ...state.settings,
+                  isLoading: false,
+                  isLogged: true,
+                  hasFailed: false
+              }
+          };
+      case SUBMIT_LOGIN_FAILURE:
+              return {
+                  ...state,
+                  settings: {
+                      ...state.settings,
+                      isLoading: false,
+                      hasFailed: true,
+                  }
+              };
+      case SUBMIT_DECONNEXION:
+          return {
+              ...state,
+              nickname: null,
+              settings: {
+                  ...state.settings,
+                  emailValue: '',
+                  passwordValue: '',
+                  isLogged: false,
+                  hasFailed: false
+              }
+          };
       default:
         return state;
     }
