@@ -11,6 +11,7 @@ import { useTheme } from '@mui/material/styles';
 import ModalCarSettings from 'src/components/ModalMapSettings/ModalCarSettings';
 import ModalLocalisationSettings from 'src/components/ModalMapSettings/ModalLocalisationSettings';
 import InterestPointModal from 'src/components/ModalMapSettings/InterestPointModal';
+import ModalConnection from '../ModalConnexion';
 
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -21,6 +22,7 @@ import {
 
 import {
   BiSearch,
+  BiUser,
   BiCar,
   BiMap,
   BiBookmark,
@@ -48,6 +50,12 @@ function Header() {
           display: 'flex', flexDirection: 'row', justifyContent: 'center', marginTop: '0.5vh',
         }}
       >
+           
+         <Box component="section" sx={{ margin: '2vh 1.5vh 0', position: 'fixed', left: '0', bottom: 'unset', top: '0', width: 'fit-content', }}>
+            <h1 className="main-title">
+              E-co Roads
+            </h1>
+      </Box>
            {matches ? ( 
             <Box component="section" sx={{ margin: '8vh 1.5vh 0' }}>
         <Fab variant="extended" aria-label="add" sx={{ display: 'inline', ml: 'auto', mr: 'auto', mt : '2vh', gap: '1vh', fontWeight: 'bold', }} onClick={(() => dispatch(openCloseCarModal()))}>
@@ -116,6 +124,7 @@ function Header() {
         </Box>
           )
           }
+
       </Box>
       <ModalCarSettings
         reducerRoute={reducerRoute}
@@ -125,6 +134,9 @@ function Header() {
       />
       <InterestPointModal
         reducerRoute={reducerRoute}
+      />
+       <ModalConnection
+        reducerRoute='auth'
       />
     </>
   );

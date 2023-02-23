@@ -8,9 +8,14 @@ import {
   Tooltip,
   useMediaQuery,
 } from '@mui/material';
+
 import { useTheme } from '@mui/material/styles';
 
 import { useDispatch } from 'react-redux';
+
+import {
+  openCloseConnectionModal
+} from 'src/actions/authentification';
 
 import {
   BiUser,
@@ -29,21 +34,14 @@ function Main() {
   };
   const [inputMenu, setinputMenu] = useState(null);
   const handleClick = (event) => {
-    dispatch(openCloseMenu(true));
+    dispatch(openCloseConnectionModal());
     setinputMenu(event.currentTarget);
   };
   // display: 'flex', flexDirection: 'row-reverse', margin: '10vh 0 15vh'
   return (
     
     <Box component="main" id="main-HomePage">
-  
-       <Box component="section" sx={{ margin: '2vh 1.5vh 0', position: 'fixed', left: '0', bottom: 'unset', top: '0', width: 'fit-content', }}>
-            <h1 className="main-title">
-              E-co Roads
-            </h1>
-      </Box>
-      
-
+          
        {matches ? <CarouselComponent /> : <StepsComponent />}
       {matches ? (
         <Box

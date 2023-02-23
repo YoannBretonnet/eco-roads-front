@@ -3,32 +3,63 @@ import './styles.scss';
 
 
 import {
-  Box
+  Box,
+  IconButton,
+  Tooltip,
 } from '@mui/material';
+
+import {
+  BiUser,
+} from 'react-icons/bi';
+
+import {
+  openCloseConnectionModal
+} from 'src/actions/authentification';
 
 // == Component
 import Header from 'src/components/Header';
 import Main from 'src/components/MapPage/Main';
 import Footer from 'src/components/Footer';
 
+
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 // == Composant
 
 function MapPage() {
-  const reducerRoute = 'auth';
-
+  const handleClick = (event) => {
+    dispatch(openCloseConnectionModal());
+    setinputMenu(event.currentTarget);
+  };
+  const args = {
+    size: 6,
+  };
   return (
     
     <>
-       <Box component="section" sx={{ margin: '2vh 1.5vh 0', position: 'fixed', left: '0', bottom: 'unset', top: '0', width: 'fit-content', }}>
-            <h1 className="main-title">
-              E-co Roads
-            </h1>
-      </Box>
       <Header />
       <Main />
       <Footer />
+      <Box
+          component="section"
+          sx={{
+            position: 'fixed', right: '0', bottom: 'unset', top: '0', width: 'fit-content',
+          }}
+        >
+          {
+          <>
+            <Tooltip title="Settings">
+              <IconButton
+                onClick={handleClick}
+                aria-haspopup="true"
+              >
+                <BiUser size={`${args.size}vh`} />
+              </IconButton>
+            </Tooltip>
+                 </>
+      }
+      </Box>
+           
      </>
   );
 }
