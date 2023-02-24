@@ -17,6 +17,7 @@ import AboutPage from 'src/components/AboutPage';
 // == Composant
 function App() {
   const isMapGenerated = useSelector((state) => state.mapData.status.isMapGenerated);
+
   useEffect(() => {
     // dispatch(getVehiclesData());
     // dispatch(getCategoriesData());

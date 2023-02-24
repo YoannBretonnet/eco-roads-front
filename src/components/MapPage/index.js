@@ -40,26 +40,7 @@ function MapPage() {
       <Header />
       <Main />
       <Footer />
-      <Box
-          component="section"
-          sx={{
-            position: 'fixed', right: '0', bottom: 'unset', top: '0', width: 'fit-content',
-          }}
-        >
-          {
-          <>
-            <Tooltip title="Settings">
-              <IconButton
-                onClick={handleClick}
-                aria-haspopup="true"
-              >
-                <BiUser size={`${args.size}vh`} />
-              </IconButton>
-            </Tooltip>
-                 </>
-      }
-      </Box>
-           
+             
      </>
   );
 }

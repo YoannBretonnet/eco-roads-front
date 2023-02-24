@@ -4,7 +4,8 @@ import {
     SUBMIT_LOGIN, 
     SUBMIT_LOGIN_SUCCESS, 
     SUBMIT_LOGIN_FAILURE, 
-    SUBMIT_DECONNEXION
+    SUBMIT_DECONNEXION,
+    OPEN_MENU,
   } from 'src/actions/authentification';
   
   export const initialState = {
@@ -28,6 +29,9 @@ import {
       location: undefined,
       categories: [],
     },
+    openMenu: {
+      isOpen: false
+    }
     
   };
   
@@ -96,6 +100,14 @@ import {
                   hasFailed: false
               }
           };
+        case OPEN_MENU:
+            return {
+                ...state,
+                openMenu: {
+                    ...state.openMenu,
+                    isOpen: true
+                }
+            };
       default:
         return state;
     }

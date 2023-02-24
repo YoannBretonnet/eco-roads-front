@@ -20,3 +20,13 @@
   background-size: contain;
 
 }
+
+.appContainer {
+  position: fixed;
+  right: 0px;
+  transition: right 0.4s;
+
+  &--open {
+      right: -50px;
+  }
+}

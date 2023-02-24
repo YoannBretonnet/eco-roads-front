@@ -5,6 +5,7 @@ import './styles.scss';
 import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
 import Main from 'src/components/HomePage/Main';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   Box,
   useMediaQuery,
@@ -16,6 +17,7 @@ function HomePage() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('tablet'));
   const matchesMobile = useMediaQuery(theme.breakpoints.down('mobile'));
+  const isOpen = useSelector((state) => state.auth.openMenu.isOpen)
   const reducerRoute = 'auth';
   const AppId = () => {
     if (matchesMobile) {
@@ -30,6 +32,7 @@ function HomePage() {
   };
   return (
     <Box
+      className= {!isOpen? "appContainer" : "appContainer--open"}
       component="div"
       id={AppId()}
       sx={{

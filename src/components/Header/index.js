@@ -12,6 +12,7 @@ import ModalCarSettings from 'src/components/ModalMapSettings/ModalCarSettings';
 import ModalLocalisationSettings from 'src/components/ModalMapSettings/ModalLocalisationSettings';
 import InterestPointModal from 'src/components/ModalMapSettings/InterestPointModal';
 import ModalConnection from '../ModalConnexion';
+import Menu from './Menu';
 
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -21,7 +22,12 @@ import {
 } from 'src/actions/mapSettings';
 
 import {
-  BiSearch,
+  openCloseConnectionModal,
+  openMenu
+} from 'src/actions/authentification';
+
+import {
+  BiDotsVerticalRounded,
   BiUser,
   BiCar,
   BiMap,
@@ -38,6 +44,14 @@ function Header() {
   const { isOpen: isCarOpen } = useSelector((state) => state.mapSettings.carSettingsModal);
   const { isOpen: isLocalisationOpen } = useSelector((state) => state.mapSettings.localisationSettingsModal);
   const { isOpen: isInterestPointOpen } = useSelector((state) => state.mapSettings.interestPointModal);
+  const {isConnected : isConnected} = useSelector((state) => state.auth.connectionModal);
+  const handleClick = (event) => {
+    dispatch(openCloseConnectionModal());
+   };
+  const handleClickConnected = (event) => {
+    dispatch(openMenu());
+
+  }
   const args = {
     size: '4vh',
   };
@@ -55,6 +69,40 @@ function Header() {
             <h1 className="main-title">
               E-co Roads
             </h1>
+        </Box>
+     
+        {/* <Menu /> */}
+    
+        
+        <Box
+          component="section"
+          sx={{
+            position: 'fixed', right: '0', bottom: 'unset', top: '0', width: 'fit-content',
+          }}
+        >
+          {
+          <>
+          {!isConnected ? 
+            <Tooltip title="Settings">
+              <IconButton
+                onClick={handleClick}
+                aria-haspopup="true"
+              >
+                <BiUser size={`6vh`} />
+              </IconButton>
+            </Tooltip>
+            :
+            <Tooltip title="Settings">
+              <IconButton
+                onClick={handleClickConnected}
+                aria-haspopup="true"
+              >
+                <BiDotsVerticalRounded size={`6vh`} color={'blue'}/>
+              </IconButton>
+            </Tooltip>
+          }
+        </>
+      }
       </Box>
            {matches ? ( 
             <Box component="section" sx={{ margin: '8vh 1.5vh 0' }}>

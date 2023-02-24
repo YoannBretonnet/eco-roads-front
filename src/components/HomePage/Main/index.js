@@ -17,10 +17,6 @@ import {
   openCloseConnectionModal
 } from 'src/actions/authentification';
 
-import {
-  BiUser,
-} from 'react-icons/bi';
-
 import CarouselComponent from 'src/components/Carousel';
 import StepsComponent from 'src/components/StepsComponent';
 
@@ -51,17 +47,7 @@ function Main() {
           }}
         >
           {
-          <>
-            <Tooltip title="Settings">
-              <IconButton
-                onClick={handleClick}
-                aria-haspopup="true"
-              >
-                <BiUser size={`${args.size}vh`} />
-              </IconButton>
-            </Tooltip>
-                 </>
-      }
+        }
       </Box>
       ) : (
         <Box

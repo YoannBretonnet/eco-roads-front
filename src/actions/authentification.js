@@ -4,6 +4,7 @@ export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const SUBMIT_LOGIN_SUCCESS = 'SUBMIT_LOGIN_SUCCESS';
 export const SUBMIT_LOGIN_FAILURE = 'SUBMIT_LOGIN_FAILURE';
 export const SUBMIT_DECONNEXION = 'SUBMIT_DECONNEXION';
+export const OPEN_MENU = 'OPEN_MENU';
 
 export const openCloseConnectionModal = () => ({
   type: OPEN_CLOSE_CONNECTION_MODAL,
@@ -33,4 +34,8 @@ export const submitLoginFailure = () => ({
 
 export const submitDeconnexion = () => ({
   type: SUBMIT_DECONNEXION
+})
+
+export const openMenu = () => ({
+  type: OPEN_MENU
 })
