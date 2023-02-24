@@ -1,5 +1,5 @@
 import axios from 'axios'; 
-import {SUBMIT_LOGIN, submitLoginSuccess, submitLoginFailure } from 'src/store/actions/authentification'
+import {SUBMIT_LOGIN, submitLoginSuccess, submitLoginFailure } from 'src/actions/authentification'
 
 const authMiddleware = (store) => (next) => (action) => {
 
@@ -14,14 +14,15 @@ const authMiddleware = (store) => (next) => (action) => {
     'Content-Type': 'application/json'
   },
   data: {
-    email: state.settings.emailValue,
-    password: state.settings.passwordValue,
+    email: state.auth.connectionModal.emailValue,
+    password: state.auth.connectionModal.passwordValue,
     },
   };
 
-  axios(config)
+  axios(config) 
   .then((response) => {
     store.dispatch(submitLoginSuccess(response.data.pseudo));
+    console.log ('login success')
   })
   .catch((error) => {
     console.log(error);

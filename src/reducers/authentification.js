@@ -10,6 +10,7 @@ import {
   export const initialState = {
     connectionModal: {
       isOpen: false,
+      isConnected: false,
       emailValue: '',
       passwordValue: '',
       nickname: '',
@@ -27,7 +28,7 @@ import {
       location: undefined,
       categories: [],
     },
-    isConnected: false,
+    
   };
   
   const reducer = (state = initialState, action = {}) => {
@@ -53,41 +54,40 @@ import {
             ...state,
             connectionModal: {
               ...state.connectionModal,
-              emailValue: '',
-              passwordValue: '',
-              isLoading: true,
-            },
-            accountCreationModal: {
-              ...state.accountCreationModal,
-              isRegisteredAlert: false,
+               isLoading: true,
             },
           };
       case SUBMIT_LOGIN_SUCCESS:
         return {
           ...state,
-          nickname: action.nickname,
-          connectionModal: {
-            ...state.connectionModal,
-            error: {
-              isError: false,
-              message: '',
-            },
-            isLoading: false,
+             connectionModal: {
+              ...state.connectionModal,
+              isConnected: true,
+              isOpen: false,
+              emailValue: '',
+              passwordValue: '',
+              nickname: action.nickname,
+              isLoading: false,
           },
         };
       case SUBMIT_LOGIN_FAILURE:
               return {
                   ...state,
-                  settings: {
-                      ...state.settings,
-                      isLoading: false,
-                      hasFailed: true,
-                  }
-              };
+                  isOpen: false,
+                  connectionModal: {
+                    ...state.connectionModal,
+                    error: {
+                      isError: false,
+                      message: '',
+                    },
+                    isLoading: false,
+                  },
+                };
       case SUBMIT_DECONNEXION:
           return {
               ...state,
               nickname: null,
+              isConnected: false,
               settings: {
                   ...state.settings,
                   emailValue: '',

@@ -56,7 +56,7 @@ function ModalConnection({ reducerRoute }) {
           required
           sx={{ width: '100%' }}
           value={emailValue}
-          onChange={(event) => dispatch(changeInputValue(event.target.value, emailValue, modalElement))}
+          onChange={(event) => dispatch(changeInputValue(event.target.value, 'emailValue', modalElement))}
         />
           <TextField
           type="password"
@@ -66,7 +66,7 @@ function ModalConnection({ reducerRoute }) {
           required
           sx={{ width: '100%' }}
           value={passwordValue}
-          onChange={(event) => dispatch(changeInputValue(event.target.value, passwordValue, modalElement))}
+          onChange={(event) => dispatch(changeInputValue(event.target.value, 'passwordValue', modalElement))}
         />
         {error.isError && (
         <FormHelperText
