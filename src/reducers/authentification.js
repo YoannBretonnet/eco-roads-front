@@ -48,35 +48,24 @@ import {
             [action.inputElement]: action.inputValue,
           },
         };
-      case CONNECT_USER:
-        return {
-          ...state,
-          connectionModal: {
-            ...state.connectionModal,
-            emailValue: '',
-            passwordValue: '',
-            isLoading: true,
-          },
-          accountCreationModal: {
-            ...state.accountCreationModal,
-            isRegisteredAlert: false,
-          },
-        };
-      case CONNECT_USER_FAIL:
-        return {
-          ...state,
-          connectionModal: {
-            ...state.connectionModal,
-            error: {
-              isError: true,
-              message: action.message,
+        case SUBMIT_LOGIN:
+          return {
+            ...state,
+            connectionModal: {
+              ...state.connectionModal,
+              emailValue: '',
+              passwordValue: '',
+              isLoading: true,
             },
-            isLoading: false,
-          },
-        };
-      case CONNECT_USER_SUCCESS:
+            accountCreationModal: {
+              ...state.accountCreationModal,
+              isRegisteredAlert: false,
+            },
+          };
+      case SUBMIT_LOGIN_SUCCESS:
         return {
           ...state,
+          nickname: action.nickname,
           connectionModal: {
             ...state.connectionModal,
             error: {
@@ -86,25 +75,6 @@ import {
             isLoading: false,
           },
         };
-        case SUBMIT_LOGIN:
-          return {
-              ...state,
-              settings: {
-                  ...state.settings,
-                  isLoading: true,
-              }
-           };
-      case SUBMIT_LOGIN_SUCCESS:
-          return {
-              ...state,
-              nickname: action.nickname,
-              settings: {
-                  ...state.settings,
-                  isLoading: false,
-                  isLogged: true,
-                  hasFailed: false
-              }
-          };
       case SUBMIT_LOGIN_FAILURE:
               return {
                   ...state,

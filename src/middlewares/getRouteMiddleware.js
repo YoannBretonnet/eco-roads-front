@@ -14,7 +14,7 @@ import {
   openCloseInterestPointModal,
 } from 'src/actions/mapSettings';
 
-const connectUser = (store) => (next) => (action) => {
+const getRoute = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_ROUTE:
       next(action);
@@ -49,4 +49,4 @@ const connectUser = (store) => (next) => (action) => {
   }
 };
 
-export default connectUser;
+export default getRoute;
