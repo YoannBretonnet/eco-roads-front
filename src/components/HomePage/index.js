@@ -5,12 +5,12 @@ import './styles.scss';
 import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
 import Main from 'src/components/HomePage/Main';
-import { useSelector, useDispatch } from 'react-redux';
 import {
   Box,
   useMediaQuery,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import { useSelector, useDispatch } from "react-redux";
 
 // == Composant
 function HomePage() {
@@ -32,16 +32,15 @@ function HomePage() {
   };
   return (
     <Box
-      className= {!isOpen? "appContainer" : "appContainer--open"}
       component="div"
       id={AppId()}
       sx={{
-        height: 'fit-content', width: '100%', margin: '0', padding: '0', display: 'flex', flexDirection: 'column', minHeight: '100vh',
+        height: 'fit-content', width: '100%', margin: '0', padding: '0', display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative'
       }}
     >
-      <Header />
-      <Main />
-      <Footer />
+        <Header />
+        <Main />
+        <Footer />
     </Box>
   );
 }

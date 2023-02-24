@@ -36,34 +36,11 @@ function Main() {
   // display: 'flex', flexDirection: 'row-reverse', margin: '10vh 0 15vh'
   return (
     
+    <>
     <Box component="main" id="main-HomePage">
-          
        {matches ? <CarouselComponent /> : <StepsComponent />}
-      {matches ? (
-        <Box
-          component="section"
-          sx={{
-            position: 'fixed', right: '0', bottom: 'unset', top: '0', width: 'fit-content',
-          }}
-        >
-          {
-        }
-      </Box>
-      ) : (
-        <Box
-          component="section"
-          sx={{
-            position: 'fixed', right: '0', bottom: 'unset', top: '0', width: 'fit-content',
-          }}
-        >
-          {
-          <>
-            <p>Connexion</p>
-              </>
-      }
-        </Box>
-      )}
-    </Box>
+       </Box>
+       </>
   );
 }
 

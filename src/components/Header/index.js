@@ -27,7 +27,6 @@ import {
 } from 'src/actions/authentification';
 
 import {
-  BiDotsVerticalRounded,
   BiUser,
   BiCar,
   BiMap,
@@ -92,14 +91,7 @@ function Header() {
               </IconButton>
             </Tooltip>
             :
-            <Tooltip title="Settings">
-              <IconButton
-                onClick={handleClickConnected}
-                aria-haspopup="true"
-              >
-                <BiDotsVerticalRounded size={`6vh`} color={'blue'}/>
-              </IconButton>
-            </Tooltip>
+           <Menu />
           }
         </>
       }
@@ -118,7 +110,7 @@ function Header() {
               <BiCar size={args.size} />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Adresse">
+          <Tooltip title="Adresses">
             <IconButton
               className={isLocalisationOpen ? "icon" : ''}
               onClick={(() => dispatch(openCloseLocalisationModal()))}
@@ -126,7 +118,7 @@ function Header() {
               <BiMap size={args.size} />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Point d'Intérêts">
+          <Tooltip title="Points d'Intérêt">
             <IconButton
               className={isInterestPointOpen ? "icon" : ''}
               onClick={(() => dispatch(openCloseInterestPointModal()))}
@@ -151,7 +143,7 @@ function Header() {
               <BiCar size={args.size} />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Adresse">
+          <Tooltip title="Adresses">
             <IconButton
               className={isLocalisationOpen ? "icon" : ''}
               onClick={(() => dispatch(openCloseLocalisationModal()))}
@@ -159,7 +151,7 @@ function Header() {
               <BiMap size={args.size} />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Point d'Intérêts">
+          <Tooltip title="Points d'Intérêt">
             <IconButton
               className={isInterestPointOpen ? "icon" : ''}
               onClick={(() => dispatch(openCloseInterestPointModal()))}

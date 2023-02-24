@@ -22,11 +22,16 @@
 }
 
 .appContainer {
-  position: fixed;
+  position: absolute;
   right: 0px;
-  transition: right 0.4s;
+  opacity: 1;
+  transition: right 1s, opacity 1s;
+  
 
   &--open {
-      right: -50px;
+    position: absolute;
+      right: 200px;
+      opacity: 0;
+
   }
 }

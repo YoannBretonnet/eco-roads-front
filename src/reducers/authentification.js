@@ -105,12 +105,12 @@ import {
                 ...state,
                 openMenu: {
                     ...state.openMenu,
-                    isOpen: true
+                    isOpen: true,
                 }
             };
       default:
         return state;
     }
   };
-  
+    
   export default reducer;
