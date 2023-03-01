@@ -1,7 +1,7 @@
 import IconButton from '@mui/material/IconButton';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-
+    submitDeconnexion,
     openMenu
   } from 'src/actions/authentification';
   
@@ -18,6 +18,9 @@ function FloatingMenu () {
     const isOpen = useSelector ((state) => state.auth.openMenu.isOpen)
     const handleClick = () => {
         dispatch(openMenu());
+    }
+    const handleDeconnexion = () => {
+        dispatch(submitDeconnexion())
     }
     return (
             <>
@@ -44,7 +47,9 @@ function FloatingMenu () {
                         </div>
                     <div className= {!isOpen ? 'menu' :'menu menu--open'} >
                             <button>Profile</button>
-                            <button>Déconnexion</button>
+                            <button
+                            onClick={handleDeconnexion}
+                            >Déconnexion</button>
                         </div>
                      </div>
                     </>

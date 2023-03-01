@@ -88,18 +88,22 @@ import {
                   },
                 };
       case SUBMIT_DECONNEXION:
-          return {
-              ...state,
-              nickname: null,
+        return {
+          ...state,
+             connectionModal: {
+              ...state.connectionModal,
               isConnected: false,
-              settings: {
-                  ...state.settings,
-                  emailValue: '',
-                  passwordValue: '',
-                  isLogged: false,
-                  hasFailed: false
-              }
-          };
+              isOpen: false,
+              emailValue: '',
+              passwordValue: '',
+              nickname: action.nickname,
+              isLoading: false
+             },
+              openMenu: {
+                ...state.openMenu,
+                isOpen: false,
+          },
+        };
         case OPEN_MENU:
             return {
                 ...state,
