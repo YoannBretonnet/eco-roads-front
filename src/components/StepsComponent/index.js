@@ -12,18 +12,21 @@ function StepsComponent() {
   const items = [
     {
       step: 'Etape 1',
-      description: 'Renseignez vos information',
+      description: 'Renseignez vos informations',
       icon: 'BiEditAlt',
+      content: 'Sélectionnez votre véhicule afin que nous indiquions les bornes électriques adaptées'
     },
     {
       step: 'Etape 2',
       description: 'Générez votre trajet',
       icon: 'BiWrench',
+      content: `Renseignez vos points de départ et d'arrivée, ainsi que les points d'intérêt où vous aimeriez vous arrêter`
     },
     {
       step: 'Etape 3',
       description: 'Laissez vous guider',
       icon: 'BiMapAlt',
+      content: `E-co road vous propose des points d'intérêt recommandés et les bornes électriques sur le chemin. Bon voyage!`
     },
   ];
   const args = {
@@ -45,9 +48,10 @@ function StepsComponent() {
                   <h3 className="steps-step">{DOMPurify.sanitize(item.step, { USE_PROFILES: { html: false } })}</h3>
                   <p className="steps-content">{DOMPurify.sanitize(item.description, { USE_PROFILES: { html: false } })}</p>
               </div>
-            <div className="flip-card-back">
-              <p>Architect & Engineer</p> 
-              <p>We love that guy</p>
+              <div className="flip-card-back">
+              <>
+              <p>{DOMPurify.sanitize(item.content, { USE_PROFILES: { html: false } })}</p> 
+              </>
           </div>
         </div>
       </div>
@@ -57,29 +61,6 @@ function StepsComponent() {
     </Box>
   );
 
-  // return (
-  //   <Box component="section" sx={{ margin: '2vh auto 0 auto', width: 'fit-content', height: 'fit-content' }}>
-  //     <h2 className="steps-title">
-  //       Comment ça marche ?
-  //     </h2>
-  //     <Box component="article" sx={{ margin: 'auto', width: 'fit-content', height: 'fit-content', display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '7vw'}}>
-  //       {
-  //         items.map((item, i) => (
-  //           <Paper
-  //             key={i}
-  //             sx={{
-  //               width: args.squareSize, height: args.squareSize, background: 'transparent', border: '0.4vh solid black', borderRadius: '10%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '3.5vh',
-  //             }}
-  //           >
-  //             <Icon iconSelector={item.icon} />
-  //             <h3 className="steps-step">{DOMPurify.sanitize(item.step, { USE_PROFILES: { html: false } })}</h3>
-  //             <p className="steps-content">{DOMPurify.sanitize(item.description, { USE_PROFILES: { html: false } })}</p>
-  //           </Paper>
-  //         ))
-  //       }
-  //     </Box>
-  //   </Box>
-  // );
 }
 
 // == Export

@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // == Style
 import './styles.scss';
 import { ThemeProvider } from '@mui/material';
+import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles';
 import theme from 'src/styles/styles';
 
 // == Component

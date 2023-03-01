@@ -105,7 +105,7 @@ import {
                 ...state,
                 openMenu: {
                     ...state.openMenu,
-                    isOpen: true,
+                    isOpen: !state.openMenu.isOpen,
                 }
             };
       default:

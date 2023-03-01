@@ -13,6 +13,7 @@ import ModalLocalisationSettings from 'src/components/ModalMapSettings/ModalLoca
 import InterestPointModal from 'src/components/ModalMapSettings/InterestPointModal';
 import ModalConnection from '../ModalConnexion';
 import Menu from './Menu';
+import FloatingMenu from './FloatingMenu'
 
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -91,14 +92,14 @@ function Header() {
               </IconButton>
             </Tooltip>
             :
-           <Menu />
+           <FloatingMenu />
           }
         </>
       }
       </Box>
            {matches ? ( 
             <Box component="section" sx={{ margin: '8vh 1.5vh 0' }}>
-        <Fab variant="extended" aria-label="add" sx={{ display: 'inline', ml: 'auto', mr: 'auto', mt : '2vh', gap: '1vh', fontWeight: 'bold', }} onClick={(() => dispatch(openCloseCarModal()))}>
+        <Fab variant="extended" aria-label="add" sx={{ display: 'inline', ml: 'auto', mr: 'auto', mt : '2vh', gap: '1vh', fontWeight: 'bold', zindex: '3'}} onClick={(() => dispatch(openCloseCarModal()))}>
           Créez votre trajet personnalisé !
           </Fab>
           <Box component="nav" sx={{ display: 'flex', justifyContent: 'center', marginTop: '0.5vh' }}>

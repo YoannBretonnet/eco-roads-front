@@ -1,0 +1,36 @@
+.menucontainer {
+    position: fixed;
+    display: flex;
+    width: 20%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0px;
+}
+
+.toggleButton {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    right: -50px;
+    transition: right 0.4s;
+    
+    &--open {
+        right: 45px;
+    }
+}
+
+.menu {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    opacity: 0;
+    right: -100px;
+    transition: opacity 0.4s, right 0.4s;
+    
+    &--open {
+        right: 45px;
+        opacity: 1;
+    }
+}

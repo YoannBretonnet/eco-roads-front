@@ -7,12 +7,14 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
+import { useTheme } from '@mui/material/styles';
 
 import {
     BiDotsVerticalRounded
   } from 'react-icons/bi';
 
 export default function BasicMenu() {
+  const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -32,7 +34,7 @@ export default function BasicMenu() {
         aria-controls={open ? 'basic-menu' : undefined}
         aria-expanded={open ? 'true' : undefined}
       >
-      <BiDotsVerticalRounded size={`6vh`} color={'blue'}
+      <BiDotsVerticalRounded size={`6vh`} color={theme.palette.primary.main}
       />
         </IconButton>
       <Menu
@@ -44,10 +46,10 @@ export default function BasicMenu() {
           'aria-labelledby': 'basic-button',
         }}
       >
-      <p>Bienvenue {nickname} !</p>
+      <p className="bienvenue">Bienvenue {nickname} !</p>
         <MenuItem onClick={handleClose}>Profile</MenuItem>
         <MenuItem onClick={handleClose}>Trajets sauvegardés</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={handleClose}><strong>Logout</strong></MenuItem>
       </Menu>
     </div>
   );

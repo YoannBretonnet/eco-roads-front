@@ -1,5 +1,7 @@
+@use 'src/styles/vars';
+
 .main-title {
-    color: #6cc573;
+    color: vars.$lightGreen;
     font-size: 4vh;
     font-weight: bold;
     font-family: 'Noway';
@@ -8,7 +10,7 @@
   .icon{
     &::after {
       content: '';
-      border-bottom: 0.4vh solid #6cc573;
+      border-bottom: 0.4vh solid vars.$lightGreen;
       width: 100%;
       height: 100%;
       position: absolute;
