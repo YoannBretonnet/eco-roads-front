@@ -14,10 +14,12 @@ import HomePage from 'src/components/HomePage';
 import NotFoundPage from 'src/components/NotFoundPage';
 import MapPage from 'src/components/MapPage';
 import AboutPage from 'src/components/AboutPage';
+import ProfilePage from 'src/components/ProfilePage';
 
 // == Composant
 function App() {
   const isMapGenerated = useSelector((state) => state.mapData.status.isMapGenerated);
+  const isConnected = useSelector((state) => state.auth.connectionModal.isConnected)
 
   useEffect(() => {
     // dispatch(getVehiclesData());
@@ -31,6 +33,11 @@ function App() {
           {
           isMapGenerated && (
             <Route key="map" path="/map" element={<MapPage />} />
+          )
+        }
+        {
+          isConnected && (
+            <Route key="profile" path="/profile" element={<ProfilePage />} />
           )
         }
         <Route key="about" path="/about" element={<AboutPage />} />

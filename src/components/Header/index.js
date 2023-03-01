@@ -12,7 +12,6 @@ import ModalCarSettings from 'src/components/ModalMapSettings/ModalCarSettings';
 import ModalLocalisationSettings from 'src/components/ModalMapSettings/ModalLocalisationSettings';
 import InterestPointModal from 'src/components/ModalMapSettings/InterestPointModal';
 import ModalConnection from '../ModalConnexion';
-import Menu from './Menu';
 import FloatingMenu from './FloatingMenu'
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -24,7 +23,7 @@ import {
 
 import {
   openCloseConnectionModal,
-  openMenu
+  submitDeconnexion,
 } from 'src/actions/authentification';
 
 import {
@@ -34,7 +33,6 @@ import {
   BiBookmark,
 } from 'react-icons/bi';
 
-import styles from './styles.scss?inline';
 
 // == Composant
 function Header() {
@@ -45,13 +43,12 @@ function Header() {
   const { isOpen: isLocalisationOpen } = useSelector((state) => state.mapSettings.localisationSettingsModal);
   const { isOpen: isInterestPointOpen } = useSelector((state) => state.mapSettings.interestPointModal);
   const {isConnected : isConnected} = useSelector((state) => state.auth.connectionModal);
+  const handleDeconnexion = () => {
+    dispatch(submitDeconnexion())
+}
   const handleClick = (event) => {
     dispatch(openCloseConnectionModal());
    };
-  const handleClickConnected = (event) => {
-    dispatch(openMenu());
-
-  }
   const args = {
     size: '4vh',
   };
@@ -66,38 +63,81 @@ function Header() {
       >
            
          <Box component="section" sx={{ margin: '2vh 1.5vh 0', position: 'fixed', left: '0', bottom: 'unset', top: '0', width: 'fit-content', }}>
-            <h1 className="main-title">
-              E-co Roads
-            </h1>
+         <NavLink
+            key="homePage"
+            className="main-title"
+            to="/"
+          >
+            E-co Roads
+          </NavLink>
         </Box>
-     
-        {/* <Menu /> */}
-    
-        
-        <Box
-          component="section"
-          sx={{
-            position: 'fixed', right: '0', bottom: 'unset', top: '0', width: 'fit-content',
-          }}
-        >
-          {
-          <>
-          {!isConnected ? 
-            <Tooltip title="Settings">
-              <IconButton
-                onClick={handleClick}
-                aria-haspopup="true"
-              >
-                <BiUser size={`6vh`} />
-              </IconButton>
-            </Tooltip>
-            :
-           <FloatingMenu />
-          }
-        </>
-      }
-      </Box>
-           {matches ? ( 
+   
+        {matches ? 
+            // for Mobile
+           ( 
+                <Box
+                  component="section"
+                  sx={{
+                    position: 'fixed', right: '0', bottom: 'unset', top: '0', width: 'fit-content',
+                  }}
+                  >
+                    {
+                    <>
+                    {!isConnected ? 
+                      <Tooltip title="Connexion">
+                        <IconButton
+                          onClick={handleClick}
+                          aria-haspopup="true"
+                        >
+                          <BiUser size={`6vh`} />
+                        </IconButton>
+                      </Tooltip>
+                      :
+                    <FloatingMenu />
+                    }
+                    </>
+                  }
+                  </Box>
+              )
+           :
+           // for Desktop
+           ( <Box
+                  component="section"
+                  sx={{
+                    position: 'fixed', right: '0', bottom: 'unset', top: '0', width: 'fit-content',
+                  }}
+                  >
+                    {
+                    <>
+                    {!isConnected ? 
+                         <nav  
+                         className='connexion'
+                         onClick={handleClick}>
+                         <span>Connexion</span>
+                         </nav>
+                 
+                      :
+                      <nav  
+                         className='connexion connexion--menu'>
+                            <NavLink
+                                        key="profilePage"
+                                        to="/profile"
+                                    >
+                                        Profile
+                                  </NavLink>
+                      <span onClick={handleDeconnexion}
+                            >Déconnexion</span>
+                      </nav>
+                    }
+                    </>
+                  }
+                  </Box> 
+                  )
+        }
+            
+            {matches ? 
+            // for Mobile
+           ( 
             <Box component="section" sx={{ margin: '8vh 1.5vh 0' }}>
         <Fab variant="extended" aria-label="add" sx={{ display: 'inline', ml: 'auto', mr: 'auto', mt : '2vh', gap: '1vh', fontWeight: 'bold', zindex: '3'}} onClick={(() => dispatch(openCloseCarModal()))}>
           Créez votre trajet personnalisé !
@@ -130,7 +170,10 @@ function Header() {
         </Box>
         
         </Box>
-          ) : (
+          ) 
+          : 
+          // for Desktop
+          (
             <Box component="section" sx={{ margin: '2vh 1.5vh 0' }}>
             <Fab variant="extended" aria-label="add" sx={{ display: 'inline', ml: 'auto', mr: 'auto', mt : '2vh', fontWeight: 'bold', fontSize: '19px'}} onClick={(() => dispatch(openCloseCarModal()))}>
           Créez votre trajet personnalisé !

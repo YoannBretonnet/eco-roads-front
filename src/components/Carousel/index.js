@@ -36,9 +36,7 @@ function CarouselComponent() {
       content: `E-co road vous propose des points d'intérêt recommandés et les bornes électriques sur le chemin. Bon voyage!`
     },
   ];
-  const args = {
-    squareSize: '45vh',
-  };
+ 
   return (
     <Box component="section" sx={{ margin: '4vh auto 0 auto', width: 'fit-content', height: 'fit-content' }}>
       <h2 className='carousel-title'>
@@ -54,7 +52,7 @@ function CarouselComponent() {
         animation="slide"
         autoPlay={false}
         indicators={false}
-        sx={{ width: args.squareSize, height: args.squareSize, margin: 'auto' }}
+        sx={{ width: '45vh', height: '29vh', margin: 'auto' }}
         NextIcon={<BiChevronRight size="8vh" />}
         PrevIcon={<BiChevronLeft size="8vh" />}
         navButtonsProps={{

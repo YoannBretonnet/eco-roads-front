@@ -1,11 +1,18 @@
-import IconButton from '@mui/material/IconButton';
+
 import { useSelector, useDispatch } from 'react-redux';
+import { NavLink, useLocation } from 'react-router-dom';
 import {
     submitDeconnexion,
     openMenu
   } from 'src/actions/authentification';
   
 import { useTheme } from '@mui/material/styles';
+import {
+    Box,
+    IconButton,
+    Tooltip,
+    useMediaQuery,
+  } from '@mui/material';
 import {
     BiPlus
   } from 'react-icons/bi';
@@ -46,7 +53,12 @@ function FloatingMenu () {
                          }
                         </div>
                     <div className= {!isOpen ? 'menu' :'menu menu--open'} >
-                            <button>Profile</button>
+                                    <NavLink
+                                        key="profilePage"
+                                        to="/profile"
+                                    >
+                                        Profile
+                                  </NavLink>
                             <button
                             onClick={handleDeconnexion}
                             >Déconnexion</button>

@@ -4,8 +4,6 @@ import { useState } from 'react';
 import './styles.scss';
 import {
   Box,
-  IconButton,
-  Tooltip,
   useMediaQuery,
 } from '@mui/material';
 

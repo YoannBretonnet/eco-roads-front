@@ -16,3 +16,21 @@
       position: absolute;
     }
   }
+
+  .connexion {
+    margin: 4vh 1.5vh 0; 
+    position: fixed;
+    right: 0; 
+    bottom: unset;
+    top: 0;
+    width: fit-content;
+    font-weight: bold;
+    color: vars.$darkGrey;
+
+    &--menu {
+      color: vars.$darkGreen;
+      display:flex;
+      justify-content: space-between;
+      width: 11rem;
+    }
+  }
