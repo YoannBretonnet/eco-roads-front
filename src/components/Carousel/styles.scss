@@ -17,15 +17,16 @@
 }
 
 .carousel-title {
-  font-size: 3vh;
+  font-size: 2.5vh;
   font-weight: bold;
   margin-bottom: 3vh;
+  color: vars.$darkGrey;
 }
 
 .flip-card-carousel {
   background-color: transparent;
-  width: 175px;
-  height: 175px;
+  width: 27vh;
+  height: 27vh;
   perspective: 1000px;
   margin: auto;
   color: #757575;

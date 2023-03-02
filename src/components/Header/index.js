@@ -50,7 +50,7 @@ function Header() {
     dispatch(openCloseConnectionModal());
    };
   const args = {
-    size: '4vh',
+    size: '2rem',
   };
   const reducerRoute = 'mapSettings';
   return (
@@ -175,7 +175,7 @@ function Header() {
           // for Desktop
           (
             <Box component="section" sx={{ margin: '2vh 1.5vh 0' }}>
-            <Fab variant="extended" aria-label="add" sx={{ display: 'inline', ml: 'auto', mr: 'auto', mt : '2vh', fontWeight: 'bold', fontSize: '19px'}} onClick={(() => dispatch(openCloseCarModal()))}>
+            <Fab variant="extended" aria-label="add" sx={{ display: 'inline', ml: 'auto', mr: 'auto', mt : '2vh', fontWeight: 'bold', fontSize: '1rem'}} onClick={(() => dispatch(openCloseCarModal()))}>
           Créez votre trajet personnalisé !
           </Fab>
           <Box component="nav" sx={{ display: 'flex', justifyContent: 'center', marginTop: '2vh' }}>

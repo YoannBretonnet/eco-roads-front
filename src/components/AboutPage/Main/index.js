@@ -40,10 +40,11 @@ function Main() {
       <Box component="section" sx={{ margin: '4vh 0 0' }}>
 
         <h1 className="about-title">
-          L'équipe E-co Roads
+          E-co Roads
         </h1>
 
-        {matches ? <CarouselComponent /> : <StepsComponent />}
+        <p className="about-accroche">
+E-co Roads est un générateur de trajet pour véhicule électrique. Choisissez le point de départ de votre séjour et le modèle de votre véhicule. Ensuite laissez vous guider par notre proposition qui établira un itinéraire basé sur vos centres d’intérêts, que vous aurez au préalable renseignés, prenant en compte la localisation des points de recharges et les lieux à visiter. </p>
 
         <h2 className="about-title">
           Contactez-nous

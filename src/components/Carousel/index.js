@@ -38,7 +38,7 @@ function CarouselComponent() {
   ];
  
   return (
-    <Box component="section" sx={{ margin: '4vh auto 0 auto', width: 'fit-content', height: 'fit-content' }}>
+    <Box component="section" sx={{ margin: '4vh auto 0 auto', width: 'fit-content', height: '45vh' }}>
       <h2 className='carousel-title'>
      Partez à la découverte de votre région
       <br /> 
@@ -52,7 +52,7 @@ function CarouselComponent() {
         animation="slide"
         autoPlay={false}
         indicators={false}
-        sx={{ width: '45vh', height: '29vh', margin: 'auto' }}
+        sx={{ width: '45vh', height: '27vh', margin: 'auto', marginTop: '3.5vh' }}
         NextIcon={<BiChevronRight size="8vh" />}
         PrevIcon={<BiChevronLeft size="8vh" />}
         navButtonsProps={{

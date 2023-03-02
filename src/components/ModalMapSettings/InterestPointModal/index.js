@@ -39,7 +39,7 @@ function InterestPointModal({ reducerRoute, updatePage }) {
   const isErrorMax = selected.length > 3;
   const isErrorMin = selected.length < 1;
   const modalElement = 'interestPointModal';
-
+  
   return (
     <ModalElement
       dispatchCall={openCloseInterestPointModal}
@@ -53,11 +53,12 @@ function InterestPointModal({ reducerRoute, updatePage }) {
        
         onSubmit={((event) => {
           event.preventDefault();
-            if (isLocalisation) {
-               dispatch(getRoute());
+            if (!isLocalisation || isErrorMin) {
+              alert('renseignez les informations manquantes')
+               
             }
             else {
-              alert('renseignez les infos')
+              dispatch(getRoute());
             }
           })
         }
@@ -68,7 +69,7 @@ function InterestPointModal({ reducerRoute, updatePage }) {
           component="fieldset"
           variant="standard"
         >
-          <FormLabel component="legend">3 Max et 1 Min</FormLabel>
+          <FormLabel component="legend">Minimum 1 choix</FormLabel>
           <FormGroup>
             {list.map((option) => (
               <FormControlLabel

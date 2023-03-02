@@ -180,7 +180,7 @@ function ModalLocalisationSettings({ reducerRoute, updatePage }) {
       </form>
       <Box
           sx={{
-            color: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: 'auto', padding: '2vh',
+            color: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: 'auto', padding: '0 2vh', fontSize: '0.9rem',
           }}
         >
       <p> Pour la démo, utilisez ces adresses :</p>
