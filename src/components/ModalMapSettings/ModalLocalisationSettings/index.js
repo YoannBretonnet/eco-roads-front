@@ -178,6 +178,15 @@ function ModalLocalisationSettings({ reducerRoute, updatePage }) {
           </IconButton>
         </Box>
       </form>
+      <Box
+          sx={{
+            color: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: 'auto', padding: '2vh',
+          }}
+        >
+      <p> Pour la démo, utilisez ces adresses :</p>
+      <p>Départ: 11 Rue Gambetta 44000 Nantes</p>
+      <p>Arrivée: 1 Rue Viguier 35400 Saint-Malo</p>
+    </Box>
     </ModalElement>
   );
 }

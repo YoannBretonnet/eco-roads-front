@@ -124,6 +124,7 @@ export default function Map() {
         adresse,
         title,
         image,
+        description,
       } = e.features[0].properties;
 
       new mapboxgl.Popup()
@@ -132,7 +133,8 @@ export default function Map() {
           `<div>
         <img crossOrigin="anonymous" src="${DOMPurify.sanitize(image, { USE_PROFILES: { html: false } })}" />
         <h3>${DOMPurify.sanitize(title, { USE_PROFILES: { html: false } })}</h3>
-          <p>${DOMPurify.sanitize(adresse, { USE_PROFILES: { html: false } })}</p>
+          <h4>${DOMPurify.sanitize(adresse, { USE_PROFILES: { html: false } })}</h4>
+          <p>${DOMPurify.sanitize(description, { USE_PROFILES: { html: false } })}</p>
         </div>`,
         )
         .addTo(map.current);
@@ -147,50 +149,7 @@ export default function Map() {
       map.current.getCanvas().style.cursor = '';
     });
 
-    // // On ajoute les bornes
-    // map.current.on('load', () => {
-    //   bornesArray.forEach((borne, index) => {
-    //     map.current.loadImage(
-    //       myImage,
-    //       (error, image) => {
-    //         if (error) throw error;
-
-    //         // Add the image to the map style.
-    //         map.current.addImage(`${borne.properties.title} ${index + 1}`, image);
-
-    //         // Add a data source containing one point feature.
-    //         map.current.addSource(`${borne.properties.title} ${index + 1} ${index + 1}`, {
-    //           type: 'geojson',
-    //           data: {
-    //             type: 'FeatureCollection',
-    //             features: [
-    //               {
-    //                 type: 'Feature',
-    //                 geometry: {
-    //                   type: 'Point',
-    //                   coordinates: borne.geometry.coordinates,
-    //                 },
-    //               },
-    //             ],
-    //           },
-    //         });
-
-    //         // Add a layer to use the image to represent the data.
-    //         map.current.addLayer({
-    //           id: `${borne.properties.title} ${index + 1} ${index + 1}`,
-    //           type: 'symbol',
-    //           source: `${borne.properties.title} ${index + 1} ${index + 1}`, // reference the data source
-    //           layout: {
-    //             'icon-image': `${borne.properties.title} ${index + 1}`, // reference the image
-    //             'icon-size': 0.25,
-    //           },
-    //         });
-    //       },
-    //     );
-    //   });
-    //   // Load a local image
-    // });
-    
+   
   }, [InterestPoints]);
 
   return (
