@@ -1,12 +1,11 @@
 /* eslint-disable max-len */
-// == Style
-import './styles.scss';
+// == Initialisation
 import DOMPurify from 'dompurify';
 
+// == Style
+import './styles.scss';
 import Carousel from 'react-material-ui-carousel';
 import { Box } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-
 import {
   BiChevronLeft,
   BiChevronRight,
@@ -15,7 +14,6 @@ import Icon from './Icon';
 
 // == Composant
 function CarouselComponent() {
-  const theme = useTheme();
   const items = [
     {
       step: 'Etape 1',
@@ -36,13 +34,13 @@ function CarouselComponent() {
       content: `E-co road vous propose des points d'intérêt recommandés et les bornes électriques sur le chemin. Bon voyage!`
     },
   ];
- 
+
   return (
     <Box component="section" sx={{ margin: '4vh auto 0 auto', width: 'fit-content', height: '45vh' }}>
       <h2 className='carousel-title'>
-     Partez à la découverte de votre région
-      <br /> 
-      au volant de votre voiture électrique
+        Partez à la découverte de votre région
+        <br />
+        au volant de votre voiture électrique
       </h2>
       <Carousel
         navButtonsAlwaysVisible
@@ -68,19 +66,19 @@ function CarouselComponent() {
         {
           items.map((item, i) => (
             <div className="flip-card-carousel" key={i}>
-            <div className="flip-card-inner-carousel">
-              <div className="flip-card-front-carousel">
-              <Icon iconSelector={item.icon}/>
+              <div className="flip-card-inner-carousel">
+                <div className="flip-card-front-carousel">
+                  <Icon iconSelector={item.icon} />
                   <h3 className="steps-step">{DOMPurify.sanitize(item.step, { USE_PROFILES: { html: false } })}</h3>
                   <p className="steps-content">{DOMPurify.sanitize(item.description, { USE_PROFILES: { html: false } })}</p>
+                </div>
+                <div className="flip-card-back-carousel">
+                  <>
+                    <p>{DOMPurify.sanitize(item.content, { USE_PROFILES: { html: false } })}</p>
+                  </>
+                </div>
               </div>
-            <div className="flip-card-back-carousel">
-              <>
-              <p>{DOMPurify.sanitize(item.content, { USE_PROFILES: { html: false } })}</p> 
-              </>
-          </div>
-        </div>
-      </div>
+            </div>
           ))
         }
       </Carousel>

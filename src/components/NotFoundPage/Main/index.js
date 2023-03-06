@@ -4,7 +4,6 @@ import {
   Box,
 //  useMediaQuery,
 } from '@mui/material';
-// import { useTheme } from '@mui/material/styles';
 
 // == Composant
 function Main() {

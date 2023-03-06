@@ -1,28 +1,24 @@
-
+// == Initialisation
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+
+// == Actions
 import {
-    submitDeconnexion,
-    openMenu
-  } from 'src/actions/authentification';
-  
+submitDeconnexion,
+openMenu
+} from 'src/actions/authentification';
+
+// == Style
+import './styles.scss';
 import { useTheme } from '@mui/material/styles';
-import {
-    Box,
-    IconButton,
-    Tooltip,
-    useMediaQuery,
-  } from '@mui/material';
-import {
-    BiPlus
-  } from 'react-icons/bi';
+import { IconButton } from '@mui/material';
+import { BiPlus } from 'react-icons/bi';
 
-import './styles.scss'
-
-function FloatingMenu () {
+// == Composant
+function FloatingMenu() {
     const theme = useTheme();
     const dispatch = useDispatch();
-    const isOpen = useSelector ((state) => state.auth.openMenu.isOpen)
+    const isOpen = useSelector((state) => state.auth.openMenu.isOpen)
     const handleClick = () => {
         dispatch(openMenu());
     }
@@ -30,41 +26,39 @@ function FloatingMenu () {
         dispatch(submitDeconnexion())
     }
     return (
-            <>
-                
-                    <div className= 'menucontainer' >
-                        <div className= {!isOpen ? 'toggleButton' :'toggleButton toggleButton--open'} >
-                        {isOpen ? 
+        <>
+            <div className='menucontainer' >
+                <div className={!isOpen ? 'toggleButton' : 'toggleButton toggleButton--open'} >
+                    {isOpen ? (
                         <IconButton
-                        onClick={handleClick}
-                        style={{transform: "rotate(45deg)"}}
+                            onClick={handleClick}
+                            style={{ transform: "rotate(45deg)" }}
                         >
-                        <BiPlus size={`6vh`} color={theme.palette.primary.main}
-                        />
+                            <BiPlus size={`6vh`} color={theme.palette.primary.main}/>
                         </IconButton>
-                        :
+                    ) : (
                         <IconButton
-                        onClick={handleClick}
-                        
-                       >
-                        <BiPlus size={`6vh`} color={theme.palette.primary.main}
-                        />
+                            onClick={handleClick}
+                        >
+                            <BiPlus size={`6vh`} color={theme.palette.primary.main}/>
                         </IconButton>
-                         }
-                        </div>
-                    <div className= {!isOpen ? 'menu' :'menu menu--open'} >
-                                    <NavLink
-                                        key="profilePage"
-                                        to="/profile"
-                                    >
-                                        Profile
-                                  </NavLink>
-                            <button
-                            onClick={handleDeconnexion}
-                            >Déconnexion</button>
-                        </div>
-                     </div>
-                    </>
+                    )
+                    }
+                </div>
+                <div className={!isOpen ? 'menu' : 'menu menu--open'} >
+                    <NavLink
+                        key="profilePage"
+                        to="/profile"
+                    >
+                        Profile
+                    </NavLink>
+                    <button
+                        onClick={handleDeconnexion}
+                    >Déconnexion
+                    </button>
+                </div>
+            </div>
+        </>
     );
 }
 

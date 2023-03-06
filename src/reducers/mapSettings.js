@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable no-else-return */
+// == Actions
 import {
   OPEN_CLOSE_CAR_MODAL,
   OPEN_CLOSE_LOCALISATION_MODAL,
@@ -21,7 +22,7 @@ import {
   CLEAR_MAP_SETTINGS,
 } from 'src/actions/mapSettings';
 
-
+// == State
 export const initialState = {
   carSettingsModal: {
     isOpen: false,
@@ -76,6 +77,7 @@ export const initialState = {
   },
 };
 
+// == Composant
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case OPEN_CLOSE_CAR_MODAL:

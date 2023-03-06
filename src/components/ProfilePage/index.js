@@ -1,24 +1,24 @@
+
 // == Style
 import './styles.scss';
-
-// == Component
-import Header from 'src/components/Header';
-import Footer from 'src/components/Footer';
-import Main from 'src/components/ProfilePage/Main';
 import {
   Box,
   useMediaQuery,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { useSelector, useDispatch } from "react-redux";
+
+
+// == Components
+import Header from 'src/components/Header';
+import Footer from 'src/components/Footer';
+import Main from 'src/components/ProfilePage/Main';
+
 
 // == Composant
 function HomePage() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('tablet'));
   const matchesMobile = useMediaQuery(theme.breakpoints.down('mobile'));
-  const isOpen = useSelector((state) => state.auth.openMenu.isOpen)
-  const reducerRoute = 'auth';
   const AppId = () => {
     if (matchesMobile) {
       return 'App';

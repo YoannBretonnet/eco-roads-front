@@ -1,26 +1,28 @@
 /* eslint-disable max-len */
-// == Import
+// == Initialisation
 import PropTypes from 'prop-types';
 import { openCloseCarModal, changeMapSettingInputValue, openCloseLocalisationModal } from 'src/actions/mapSettings';
 import { useSelector, useDispatch } from 'react-redux';
 import DOMPurify from 'dompurify';
-import brands from 'src/data/brands.json'
-import cars from 'src/data/cars.json'
+
 
 // == Style
 import './styles.scss';
-
 import {
   TextField,
   IconButton,
   FormHelperText,
 } from '@mui/material';
-
 import { BiChevronRight } from 'react-icons/bi';
+
+// == Data
+import brands from 'src/data/brands.json'
+import cars from 'src/data/cars.json'
 
 // ==Component
 import ModalElement from 'src/components/ModalElement';
 
+// == Callbacks
 function getFilteredCars(cars, brandInput) {
   return cars.filter((option) => option.brand_id === parseInt(brandInput, 10));
 }
@@ -45,7 +47,6 @@ function ModalCarSettings({ reducerRoute, updatePage }) {
       reducerRoute={reducerRoute}
     >
       <h1 className="modal-title">Sélectionnez votre véhicule :</h1>
-      
       <form
         className="modal-form-cars"
         onSubmit={((event) => {

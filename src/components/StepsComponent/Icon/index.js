@@ -1,12 +1,10 @@
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-closing-tag-location */
-// == Import
+// == Initialisation
 import PropTypes from 'prop-types';
-
 
 // == Style
 import './styles.scss';
-
 import {
   BiEditAlt,
   BiWrench,

@@ -1,12 +1,14 @@
+// == Initialisation
 import axios from 'axios'; 
+
+// == Actions
 import {SUBMIT_LOGIN, submitLoginSuccess, submitLoginFailure } from 'src/actions/authentification'
 
+// == Composant
 const authMiddleware = (store) => (next) => (action) => {
-
   if (action.type === SUBMIT_LOGIN) {
   next (action);
   const state = store.getState ();
-
   const config = {
   method: 'post',
   url: 'https://chatroom-server-yb.netlify.app/.netlify/functions/api/login',
@@ -18,7 +20,6 @@ const authMiddleware = (store) => (next) => (action) => {
     password: state.auth.connectionModal.passwordValue,
     },
   };
-
   axios(config) 
   .then((response) => {
     store.dispatch(submitLoginSuccess(response.data.pseudo));
@@ -31,8 +32,7 @@ const authMiddleware = (store) => (next) => (action) => {
 
   } else {
     next(action);
-  }
-    
+  } 
   };
   
   export default authMiddleware;

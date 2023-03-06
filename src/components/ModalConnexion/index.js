@@ -1,27 +1,24 @@
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-closing-tag-location */
-// == Import
+// == Initialisation
 import PropTypes from 'prop-types';
-import DOMPurify from 'dompurify';
 
 // == Style
 import './styles.scss';
-
 import {
   TextField,
   IconButton,
-  FormHelperText,
   CircularProgress,
 } from '@mui/material';
-
 import { BiChevronRight, BiCheck } from 'react-icons/bi';
 
+// == Actions
 import {
   openCloseConnectionModal, changeInputValue, submitLogin,
 } from 'src/actions/authentification';
 import { useSelector, useDispatch } from 'react-redux';
 
-// ==Component
+// ==Components
 import ModalElement from 'src/components/ModalElement';
 
 // == Composant
@@ -32,7 +29,7 @@ function ModalConnection({ reducerRoute }) {
     emailValue,
     passwordValue,
     isLoading,
-    error,
+    isError,
   } = useSelector((state) => state.auth[modalElement]);
   return (
     <ModalElement
@@ -61,17 +58,15 @@ function ModalConnection({ reducerRoute }) {
           <TextField
           type="password"
           id="password-input"
-          label="Password"
+          label="Mot de passe"
           variant="outlined"
           required
           sx={{ width: '100%' }}
           value={passwordValue}
           onChange={(event) => dispatch(changeInputValue(event.target.value, 'passwordValue', modalElement))}
         />
-        {error.isError && (
-        <FormHelperText
-          error={error.isError}
-        >{DOMPurify.sanitize(error.message, { USE_PROFILES: { html: false } })}</FormHelperText>
+        {isError && (
+           <p className='loginfail'>Email ou mot de passe erroné</p>
         )}
         {
           !isLoading ? (
@@ -92,7 +87,6 @@ ModalConnection.defaultProps = {
     updatePage: false,
   };
   
-
 ModalConnection.propTypes = {
   reducerRoute: PropTypes.string.isRequired,
   updatePage: PropTypes.bool,

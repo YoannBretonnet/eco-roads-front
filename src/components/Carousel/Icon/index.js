@@ -3,10 +3,7 @@
 // == Import
 import PropTypes from 'prop-types';
 
-
 // == Style
-import './styles.scss';
-
 import {
   BiEditAlt,
   BiWrench,

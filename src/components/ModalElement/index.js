@@ -1,17 +1,14 @@
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-closing-tag-location */
-// == Import
+// == Initialisation
 import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 
 // == Style
-import './styles.scss';
-
 import {
   Box, Modal, Paper, useMediaQuery,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-
-import { useSelector, useDispatch } from 'react-redux';
 
 // == Composant
 function ModalElement({
@@ -31,39 +28,37 @@ function ModalElement({
         display: 'flex', alignItems: 'center', justifyContent: 'center',
       }}
     >
-      {
-        matches ? (
-          <Box
-            component="section"
+      {matches ? (
+        <Box
+          component="section"
+          sx={{
+            width: '80%', height: 'fit-content', display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}
+        >
+          <Paper
             sx={{
-              width: '80%', height: 'fit-content', display: 'flex', alignItems: 'center', justifyContent: 'center',
+              width: '100%', height: 'fit-content', borderRadius: '5vh', color: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '4vh 0', gap: '2vh', position: 'relative',
             }}
           >
-            <Paper
-              sx={{
-                width: '100%', height: 'fit-content', borderRadius: '5vh', color: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '4vh 0', gap: '2vh', position: 'relative',
-              }}
-            >
-              {children}
-            </Paper>
-          </Box>
-        ) : (
-          <Box
-            component="section"
+            {children}
+          </Paper>
+        </Box>
+      ) : (
+        <Box
+          component="section"
+          sx={{
+            width: '35vh', height: 'fit-content', display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}
+        >
+          <Paper
             sx={{
-              width: '35vh', height: 'fit-content', display: 'flex', alignItems: 'center', justifyContent: 'center',
+              width: '100%', height: 'fit-content', borderRadius: '5vh', color: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '4vh 0', gap: '2vh', position: 'relative',
             }}
           >
-            <Paper
-              sx={{
-                width: '100%', height: 'fit-content', borderRadius: '5vh', color: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '4vh 0', gap: '2vh', position: 'relative',
-              }}
-            >
-              {children}
-            </Paper>
-          </Box>
-        )
-      }
+            {children}
+          </Paper>
+        </Box>
+      )}
     </Modal>
   );
 }

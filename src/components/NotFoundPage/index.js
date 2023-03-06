@@ -1,18 +1,16 @@
+// == Initialisation
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // == Style
 import './styles.scss';
-
-// == Component
-import Footer from 'src/components/Footer';
-import Main from 'src/components/NotFoundPage/Main';
-
 import {
   Box,
-//  useMediaQuery,
 } from '@mui/material';
-// import { useTheme } from '@mui/material/styles';
+
+// == Components
+import Footer from 'src/components/Footer';
+import Main from 'src/components/NotFoundPage/Main';
 
 // == Composant
 function NotFoundPage() {

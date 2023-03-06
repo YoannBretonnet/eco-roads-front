@@ -1,14 +1,16 @@
 /* eslint-disable no-case-declarations */
+// == Initialisation
 import axios from 'axios';
 
+// == Actions
 import {
   GET_CATEGORIES_DATA,
   getCategoriesData,
   getCategoriesDataSuccess,
-  getCategoriesDataFail,
   CLEAR_MAP_SETTINGS,
 } from 'src/actions/mapSettings';
 
+// == Composant
 const getCategoriesDataMiddlewares = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_CATEGORIES_DATA:

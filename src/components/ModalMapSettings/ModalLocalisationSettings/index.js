@@ -1,18 +1,10 @@
 /* eslint-disable max-len */
-// == Import
+// == Initialisation
 import PropTypes from 'prop-types';
-import {
-  openCloseLocalisationModal,
-  changeMapSettingAutocompleteValue,
-  updateListOfLocalisation,
-  openCloseInterestPointModal,
-  openCloseCarModal,
-} from 'src/actions/mapSettings';
 import { useSelector, useDispatch } from 'react-redux';
 
 // == Style
 import './styles.scss';
-
 import {
   TextField,
   IconButton,
@@ -21,11 +13,21 @@ import {
   Box,
   FormHelperText,
 } from '@mui/material';
-
 import { BiChevronRight, BiChevronLeft } from 'react-icons/bi';
+
+// == Actions
+import {
+  openCloseLocalisationModal,
+  changeMapSettingAutocompleteValue,
+  updateListOfLocalisation,
+  openCloseInterestPointModal,
+  openCloseCarModal,
+} from 'src/actions/mapSettings';
 
 // ==Component
 import ModalElement from 'src/components/ModalElement';
+
+// == Callbacks
 
 function getGoodOptions(arrayProposition) {
   if (!arrayProposition[0]) {

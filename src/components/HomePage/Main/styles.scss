@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 @font-face {
     font-family: "Roboto";
     src: url(src/assets/fonts/Roboto-Regular.ttf);
@@ -16,7 +18,7 @@
 }
 
 .main-title {
-  color: #6cc573;
+  color: vars.$lightGreen;
   font-size: 4vh;
   font-weight: bold;
   font-family: 'Noway';
@@ -25,13 +27,13 @@
 .main-accroche {
   font-size: 2.5vh;
   font-family: 'Roboto';
-  color: #757575;
+  color: vars.$lightGreen;
 }
 
 .main-accroche-desktop {
   width: 40%;
   font-family: 'Roboto';
-  color: #757575;
+  color: vars.$lightGreen;
   font-size: 4vh;
   margin-right: 12vh;
   text-align: right;

@@ -1,11 +1,10 @@
+// == Actions
 import {
   GET_ROUTE,
   GET_ROUTE_SUCCESS,
-  GET_ROUTE_FAIL,
 } from 'src/actions/mapData';
 
-
-
+// == State
 export const initialState = {
   startEndCoords: {
     stLong: undefined,
@@ -43,6 +42,7 @@ export const initialState = {
   },
 };
 
+// == Composant
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case GET_ROUTE:
@@ -75,18 +75,6 @@ const reducer = (state = initialState, action = {}) => {
           isMapGenerated: true,
         },
       };
-    case GET_ROUTE_FAIL:
-      return {
-        ...state,
-        status: {
-          ...state.pointCoords.status,
-          isLoading: false,
-          error: {
-            isError: true,
-            message: action.message,
-          },
-        },
-      };
     default:
       return state;
   }
@@ -94,64 +82,3 @@ const reducer = (state = initialState, action = {}) => {
 
 export default reducer;
 
-
-
-// const reducer = (state = initialState, action = {}) => {
-//   switch (action.type) {
-//     case GET_ROUTE:
-//       return {
-//         ...state,
-//         status: {
-//           ...state.status,
-//           isLoading: true,
-//           error: {
-//             isError: false,
-//             message: undefined,
-//           },
-//         },
-//       };
-//     case GET_ROUTE_SUCCESS:
-//       return {
-//         ...state,
-//         startEndCoords: {
-//           stLong: action.data.waypoints.departure[0],
-//           stLat: action.data.waypoints.departure[1],
-//           arLong: action.data.waypoints.arrival[0],
-//           arLat: action.data.waypoints.arrival[1],
-//         },
-//         pointCoords: {
-//           ...state.pointCoords,
-//           data: {
-//             ...state.pointCoords.data,
-//             features: [
-//               ...action.data.road,
-//             ],
-//           },
-//         },
-//         userInfo: {
-//           ...action.data.userInfo,
-//         },
-//         status: {
-//           ...state.status,
-//           isLoading: false,
-//           isMapGenerated: true,
-//         },
-//       };
-//     case GET_ROUTE_FAIL:
-//       return {
-//         ...state,
-//         status: {
-//           ...state.pointCoords.status,
-//           isLoading: false,
-//           error: {
-//             isError: true,
-//             message: action.message,
-//           },
-//         },
-//       };
-//     default:
-//       return state;
-//   }
-// };
-
-// export default reducer;

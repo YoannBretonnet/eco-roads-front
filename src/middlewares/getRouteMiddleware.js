@@ -1,19 +1,20 @@
 /* eslint-disable max-len */
 /* eslint-disable no-case-declarations */
+// == Initialisation
 import axios from 'axios';
 import history from '../history.js'
 
+// == Actions
 import {
   GET_ROUTE,
   GET_ROUTE_SUCCESS,
   getRouteSuccess,
-  getRouteFail,
 } from 'src/actions/mapData';
-
 import {
   openCloseInterestPointModal,
 } from 'src/actions/mapSettings';
 
+// == Composant
 const getRoute = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_ROUTE:
@@ -35,7 +36,6 @@ const getRoute = (store) => (next) => (action) => {
           store.dispatch(getRouteSuccess(data));
         })
         .catch((error) => {
-          // store.dispatch(getRouteFail(Object.values(error.response.data)[0]));
           console.log('route failed', error);
         });
       break;

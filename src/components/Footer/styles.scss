@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 #footer-decorations {
   margin: 0 1.5vh 0;
   height: 1.2vh;
@@ -10,7 +12,7 @@
   &-first-element {
     height: 100%;
     width: 20vw;
-    background: linear-gradient(90deg, rgba(182,219,104,1) 0%, rgba(108,197,115,1) 100%);
+    background: linear-gradient(90deg, vars.$lightGreen 0%, vars.$darkGreen 100%);
     border-radius: 5vh 5vh 5vh 5vh;
   }
 

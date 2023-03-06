@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
-// == Style
+// == Initialisation
 import DOMPurify from 'dompurify';
+
+// == Style
 import './styles.scss';
-
-import { Paper, Box } from '@mui/material';
-
+import { Box } from '@mui/material';
 import Icon from './Icon';
 
 // == Composant
@@ -29,9 +29,6 @@ function StepsComponent() {
       content: `E-co road vous propose des points d'intérêt recommandés et les bornes électriques sur le chemin. Bon voyage!`
     },
   ];
-  const args = {
-    squareSize: '25vh',
-  };
 
   return (
     <Box component="section" sx={{ margin: '16vh auto 0 auto', width: 'fit-content', height: 'fit-content' }}>

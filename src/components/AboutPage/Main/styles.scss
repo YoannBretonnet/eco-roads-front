@@ -19,10 +19,11 @@
 }
 
 .about-accroche {
-  font-size: 1.7vh;
+  font-size: 2vh;
   font-family: 'Roboto';
   color: #757575;
   margin-left: 1.5vh;
+  margin-right: 2.5vh;
 }
 
 .mainAbout-img-desktop {
@@ -40,4 +41,23 @@
   color: #757575;
   font-size: 4vh;
   margin: 0 auto 2vh;
+}
+
+.aboutMobile--image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 85%;
+}
+
+.aboutDesktop{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  &--image {
+    max-width:50%; 
+    height:auto;
+  }
 }

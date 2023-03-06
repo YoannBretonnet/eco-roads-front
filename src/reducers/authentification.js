@@ -1,3 +1,4 @@
+// == Actions
 import {
     OPEN_CLOSE_CONNECTION_MODAL,
     CHANGE_INPUT_VALUE,
@@ -8,6 +9,7 @@ import {
     OPEN_MENU,
   } from 'src/actions/authentification';
   
+// == State
   export const initialState = {
     connectionModal: {
       isOpen: false,
@@ -15,10 +17,7 @@ import {
       emailValue: '',
       passwordValue: '',
       nickname: '',
-      error: {
-        isError: false,
-        message: undefined,
-      },
+      isError: false,
       isLoading: false,
     },
     initialUserAccount: {
@@ -35,6 +34,7 @@ import {
     
   };
   
+  // == Composant
   const reducer = (state = initialState, action = {}) => {
     switch (action.type) {
       case OPEN_CLOSE_CONNECTION_MODAL:
@@ -43,6 +43,7 @@ import {
           connectionModal: {
             ...state.connectionModal,
             isOpen: !state.connectionModal.isOpen,
+            isError: false,
           },
         };
       case CHANGE_INPUT_VALUE:
@@ -72,6 +73,7 @@ import {
               passwordValue: '',
               nickname: action.nickname,
               isLoading: false,
+              isError: false,
           },
         };
       case SUBMIT_LOGIN_FAILURE:
@@ -80,10 +82,7 @@ import {
                   isOpen: false,
                   connectionModal: {
                     ...state.connectionModal,
-                    error: {
-                      isError: false,
-                      message: '',
-                    },
+                    isError: true,
                     isLoading: false,
                   },
                 };

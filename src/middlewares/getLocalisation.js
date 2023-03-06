@@ -1,6 +1,8 @@
 /* eslint-disable no-case-declarations */
+// == Initialisation
 import axios from 'axios';
 
+// == Actions
 import {
   UPDATE_LIST_OF_LOCALISATION,
   updateListOfLocalisationSuccess,
@@ -8,6 +10,7 @@ import {
   updateListOfLocalisationAbort,
 } from 'src/actions/mapSettings';
 
+// == Composant
 const getLocalisation = (store) => (next) => (action) => {
   switch (action.type) {
     case UPDATE_LIST_OF_LOCALISATION:

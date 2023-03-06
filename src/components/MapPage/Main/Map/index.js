@@ -1,42 +1,36 @@
 /* eslint-disable max-len */
+// == Initialisation
 import React, { useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import DOMPurify from 'dompurify';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import getMapRoute from './getMapRoute';
-import Sidebar from '../Sidebar';
 
-// import styles and icons
+// Styles
 import './styles.scss';
-import myImage from 'src/assets/images/borne.png';
 
-// import data
+// mapBox token
 import { accessToken } from 'mapbox-gl';
-
-// import mapBox token
 accessToken = 'pk.eyJ1IjoieWJyZXRvbm5ldCIsImEiOiJjbDVxdXliOHQweHV3M2tvM2hlMG41cXFwIn0.K1s56VTf9EAsagytjhRKSw';
 
 export default function Map() {
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const pointCoords = useSelector((state) => state.mapData.pointCoords);
-  const stLong = useSelector((state) => state.mapSettings.localisationSettingsModal.DepartSelected.Long);
-  const stLat = useSelector((state) => state.mapSettings.localisationSettingsModal.DepartSelected.Lat);
-  const arLong = useSelector((state) => state.mapSettings.localisationSettingsModal.ArrivSelected.Long);
-  const arLat = useSelector((state) => state.mapSettings.localisationSettingsModal.ArrivSelected.Lat);
-  const lng = (stLong + arLong) / 2;
-  const lat = (stLat + arLat) / 2;
-
-  const InterestPoints = pointCoords.data.features.map((category) => category.features);
+  const adressesCoordinate = useSelector((state) => state.mapData.pointCoords);
+  const startLong = useSelector((state) => state.mapSettings.localisationSettingsModal.DepartSelected.Long);
+  const startLat = useSelector((state) => state.mapSettings.localisationSettingsModal.DepartSelected.Lat);
+  const arrivalLong = useSelector((state) => state.mapSettings.localisationSettingsModal.ArrivSelected.Long);
+  const arrivalLat = useSelector((state) => state.mapSettings.localisationSettingsModal.ArrivSelected.Lat);
+  const lng = (startLong + arrivalLong) / 2;
+  const lat = (startLat + arrivalLat) / 2;
+  const InterestPoints = adressesCoordinate.data.features.map((category) => category.features);
   const InterestPointsReplace = JSON.stringify(InterestPoints).replaceAll('[[', '[').replaceAll(']]', ']').replaceAll('}}', '}').replaceAll('],[', ',').replaceAll(']}', ']}}');
   const InterestPointsObject = JSON.parse(InterestPointsReplace);
 
   // On récupère les coordonnées des points d'intérêt 
-  const coords = pointCoords.data.features.map((category) => category.features.map((feature) => feature.geometry.coordinates));
-  const coordsReplace = JSON.stringify(coords).replaceAll('],[', ';').replace('[[', '').replace(']]', '').replace(']', '').replace('[', '').replace('];', ';').replaceAll(';[', ';').replace('];[', ';').replace('];', ';').replace(']', '');
-
-
-  const bornesArray = pointCoords.data.features.filter((option) => option.borne === true);
+  const interestCoordinateRaw= adressesCoordinate.data.features.map((category) => category.features.map((feature) => feature.geometry.coordinates));
+  // On stringify les coordonnées et remplace certains élements pour que la string corresponde à ce que demande mapBox
+  const interestCoordinate = JSON.stringify(interestCoordinateRaw).replaceAll('],[', ';').replace('[[', '').replace(']]', '').replace(']', '').replace('[', '').replace('];', ';').replaceAll(';[', ';').replace('];[', ';').replace('];', ';').replace(']', '');
 
   useEffect(() => {
     map.current = null;
@@ -50,17 +44,16 @@ export default function Map() {
       logoPosition: 'bottom-left',
     });
 
-    // On récupère les points de départ et d'arrivée
-    const start = [stLong, stLat];
-    const end = [arLong, arLat];
+  // On récupère les points de départ et d'arrivée
+  const start = [stLong, stLat];
+  const end = [arLong, arLat];
 
-    
-      // On trace le trajet
-    map.current.on('load', () => {
-      getMapRoute(map, start, coordsReplace, end, accessToken);
+  // On trace le trajet
+  map.current.on('load', () => {
+    getMapRoute(map, start, interestCoordinate, end, accessToken);
 
-      // On ajoute les points de départs de d'arrivée
-      map.current.addLayer({
+  // On ajoute les points de départs de d'arrivée
+   map.current.addLayer({
         id: 'point',
         type: 'circle',
         source: {
@@ -93,19 +86,19 @@ export default function Map() {
         },
       });
 
-// On ajoute les points d'intérêt
-      map.current.addSource('interestPoints', 
-      {
-        type: 'geojson',
-        data: 
+  // On ajoute les points d'intérêt
+   map.current.addSource('interestPoints',
         {
+          type: 'geojson',
+          data:
+          {
             "type": "FeatureCollection",
             "features": InterestPointsObject
-        }
-    },
-    );
-      
-      map.current.addLayer({
+          }
+        },
+      );
+
+  map.current.addLayer({
         id: 'interestPoints',
         type: 'symbol',
         source: 'interestPoints',
@@ -113,21 +106,20 @@ export default function Map() {
           'icon-image': '{icon}',
         },
       });
-      
+
     });
 
-    // Quand on clique, ça ouvre une pop-up au niveau des coordonnées du point d'intérêt
-    map.current.on('click', 'interestPoints', (e) => {
-      // const coordinates = e.features[0].geometry.coordinates.slice();
-      const { coordinates } = e.features[0].geometry;
-      const {
+  // Quand on clique, ça ouvre une pop-up au niveau des coordonnées du point d'intérêt
+  map.current.on('click', 'interestPoints', (e) => {
+    const { coordinates } = e.features[0].geometry;
+    const {
         adresse,
         title,
         image,
         description,
-      } = e.features[0].properties;
+     } = e.features[0].properties;
 
-      new mapboxgl.Popup()
+    new mapboxgl.Popup()
         .setLngLat(coordinates)
         .setHTML(
           `<div>
@@ -149,7 +141,7 @@ export default function Map() {
       map.current.getCanvas().style.cursor = '';
     });
 
-   
+
   }, [InterestPoints]);
 
   return (
