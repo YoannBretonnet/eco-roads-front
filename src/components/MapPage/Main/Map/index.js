@@ -45,8 +45,8 @@ export default function Map() {
     });
 
   // On récupère les points de départ et d'arrivée
-  const start = [stLong, stLat];
-  const end = [arLong, arLat];
+  const start = [startLong, startLat];
+  const end = [arrivalLong, arrivalLat];
 
   // On trace le trajet
   map.current.on('load', () => {

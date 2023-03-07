@@ -11,9 +11,6 @@ export const OPEN_CLOSE_INTEREST_POINT_MODAL = 'OPEN_CLOSE_INTEREST_POINT_MODAL'
 export const SELECT_INTEREST_POINT = 'SELECT_INTEREST_POINT';
 export const SELECT_INTEREST_POINT_DELETE = 'SELECT_INTEREST_POINT_DELETE';
 export const SELECT_INTEREST_POINT_ADD = 'SELECT_INTEREST_POINT_ADD';
-export const GET_VEHICLES_DATA = 'GET_VEHICLES_DATA';
-export const GET_VEHICLES_DATA_SUCCESS = 'GET_VEHICLES_DATA_SUCCESS';
-export const GET_VEHICLES_DATA_FAIL = 'GET_VEHICLES_DATA_FAIL';
 export const GET_CATEGORIES_DATA = 'GET_CATEGORIES_DATA';
 export const GET_CATEGORIES_DATA_SUCCESS = 'GET_CATEGORIES_DATA_SUCCESS';
 export const GET_CATEGORIES_DATA_FAIL = 'GET_CATEGORIES_DATA_FAIL';
@@ -87,35 +84,6 @@ export const selectInterestPointDelete = (selectedOption) => ({
 export const selectInterestPointAdd = (selectedOption) => ({
   type: SELECT_INTEREST_POINT_ADD,
   selectedOption,
-});
-
-export const getVehiclesData = () => ({
-  type: GET_VEHICLES_DATA,
-});
-
-export const getVehiclesDataSuccess = (brands, cars) => ({
-  type: GET_VEHICLES_DATA_SUCCESS,
-  brands,
-  cars,
-});
-
-export const getVehiclesDataFail = (message) => ({
-  type: GET_VEHICLES_DATA_FAIL,
-  message,
-});
-
-export const getCategoriesData = () => ({
-  type: GET_CATEGORIES_DATA,
-});
-
-export const getCategoriesDataSuccess = (list) => ({
-  type: GET_CATEGORIES_DATA_SUCCESS,
-  list,
-});
-
-export const getCategoriesDataFail = (message) => ({
-  type: GET_CATEGORIES_DATA_FAIL,
-  message,
 });
 
 export const clearMapSettings = () => ({

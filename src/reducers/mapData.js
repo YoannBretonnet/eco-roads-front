@@ -6,31 +6,12 @@ import {
 
 // == State
 export const initialState = {
-  startEndCoords: {
-    stLong: undefined,
-    stLat: undefined,
-    arLong: undefined,
-    arLat: undefined,
-  },
   pointCoords: {
     type: 'geojson',
     data: {
       type: 'FeatureCollection',
       features: [],
     },
-  },
-  userInfo: {
-    car: {
-      brand_id: undefined,
-      brandname: undefined,
-      id: undefined,
-      model: undefined,
-      image: undefined,
-      name: undefined,
-    },
-    departureAddress: undefined,
-    arrivalAddress: undefined,
-    categories: [],
   },
   status: {
     isLoading: false,
@@ -53,7 +34,6 @@ const reducer = (state = initialState, action = {}) => {
           isLoading: true,
           error: {
             isError: false,
-            message: undefined,
           },
         },
       };

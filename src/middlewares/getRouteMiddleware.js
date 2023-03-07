@@ -32,8 +32,8 @@ const getRoute = (store) => (next) => (action) => {
       };
       axios(configGetInterestPoints)
         .then(({data} ) => {
-          // console.log(data)
           store.dispatch(getRouteSuccess(data));
+          console.log (data);
         })
         .catch((error) => {
           console.log('route failed', error);
