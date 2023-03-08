@@ -7,13 +7,9 @@ import  {
     updateListOfLocalisation,
     updateListOfLocalisationSuccess,
     updateListOfLocalisationFail,
-    changeMapSettingAutocompleteValue,
-    updateListOfLocalisationAbort,
-    selectInterestPoint,
     selectInterestPointDelete,
-    selectInterestPointAdd,
-    clearMapSettings,
-    } from 'src/actions/mapSetings'
+    selectInterestPointAdd
+    } from 'src/actions/mapSettings'
 
     describe('reducer for authentification', () => {
 
@@ -29,14 +25,6 @@ import  {
         describe('execution', () => {
             it('should return the initial state when called without arguments', () => {
                 expect(reducer()).toEqual(initialState)
-            });
-    
-            it('should handle GET_ROUTE action', () => {
-                const action = getRoute();
-                const stateAfterAction = reducer(initialState, action);
-    
-                expect(stateAfterAction.status.isLoading).toBe(true);
-                expect(stateAfterAction.status.error.isError).toBe(false);
             });
             it('should handle OPEN_CLOSE_CAR_MODAL action', () => {
                 const action = openCloseCarModal();
@@ -62,8 +50,36 @@ import  {
     
                 expect(stateAfterAction.carSettingsModal.brandsValue).toBe('Tesla');
             });
+            it('should handle UPDATE_LIST_OF_LOCALISATION action', () => {
+                const action = updateListOfLocalisation('Paris','DepartSelected','isDepartLoading', 'DepartProposition');
+                const stateAfterAction = reducer(initialState, action);
+                
+                expect(stateAfterAction.localisationSettingsModal.isDepartLoading).toBe(true)
+                expect(stateAfterAction.localisationSettingsModal.DepartSelected.label).toBe('Paris');
+            });
+            it('should handle UPDATE_LIST_OF_LOCALISATION_SUCCESS action', () => {
+                const mockData =  { features: [ [Object], [Object], [Object]  ]}
+                const action = updateListOfLocalisationSuccess(mockData, 'DepartProposition', 'isDepartLoading');
+                const stateAfterAction = reducer(initialState, action);
+                
+                expect(stateAfterAction.localisationSettingsModal.isDepartLoading).toBe(false)
+                expect(stateAfterAction.localisationSettingsModal.DepartProposition).toEqual(mockData.features);
+            });
+            it('should handle UPDATE_LIST_OF_LOCALISATION_FAIL action', () => {
+                const action = updateListOfLocalisationFail('DepartProposition', 'isDepartLoading');
+                const stateAfterAction = reducer(initialState, action);
+                
+    isDepartLoading: false,
+                expect(stateAfterAction.localisationSettingsModal.isDepartLoading).toBe(false);
+                expect(stateAfterAction.localisationSettingsModal.DepartProposition).toEqual([]);
+            });
+            it('SELECT_INTEREST_POINT_ADD action', () => {
+                const action = selectInterestPointAdd('nature');
+                const stateAfterAction = reducer(initialState, action);
+                
+                expect(stateAfterAction.interestPointModal.selected).toEqual(['nature']);
+            });
         });
     
     });
-    
     

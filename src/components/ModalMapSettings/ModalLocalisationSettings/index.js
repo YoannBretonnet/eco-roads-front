@@ -28,7 +28,6 @@ import {
 import ModalElement from 'src/components/ModalElement';
 
 // == Callbacks
-
 function getGoodOptions(arrayProposition) {
   if (!arrayProposition[0]) {
     return [];
@@ -93,7 +92,8 @@ function ModalLocalisationSettings({ reducerRoute, updatePage }) {
       >
         <Autocomplete
           inputValue={DepartSelected.label}
-          onChange={(_event, value) => dispatch(changeMapSettingAutocompleteValue(value, depart.inputElement, modalElement))}
+          onChange={(_event, value) => 
+          dispatch(changeMapSettingAutocompleteValue(value, depart.inputElement, modalElement))}
           noOptionsText="Aucune proposition"
           disablePortal
           disableClearable

@@ -50,9 +50,8 @@ export const updateListOfLocalisationSuccess = (data, propositionElement, loadin
   loadingElement,
 });
 
-export const updateListOfLocalisationFail = (data, propositionElement, loadingElement) => ({
+export const updateListOfLocalisationFail = (propositionElement, loadingElement) => ({
   type: UPDATE_LIST_OF_LOCALISATION_FAIL,
-  data,
   propositionElement,
   loadingElement,
 });
