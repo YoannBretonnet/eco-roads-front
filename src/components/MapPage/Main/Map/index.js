@@ -10,8 +10,8 @@ import getMapRoute from './getMapRoute';
 import './styles.scss';
 
 // mapBox token
-import { mapboxAccessToken } from 'mapbox-gl';
-mapboxAccessToken = 'pk.eyJ1IjoieWJyZXRvbm5ldCIsImEiOiJjbDVxdXliOHQweHV3M2tvM2hlMG41cXFwIn0.K1s56VTf9EAsagytjhRKSw';
+import { accessToken } from 'mapbox-gl';
+accessToken = 'pk.eyJ1IjoieWJyZXRvbm5ldCIsImEiOiJjbDVxdXliOHQweHV3M2tvM2hlMG41cXFwIn0.K1s56VTf9EAsagytjhRKSw';
 
 export default function Map() {
   const mapContainer = useRef(null);
@@ -50,7 +50,7 @@ export default function Map() {
 
   // On trace le trajet
   map.current.on('load', () => {
-    getMapRoute(map, start, interestCoordinate, end, mapboxAccessToken);
+    getMapRoute(map, start, interestCoordinate, end, accessToken);
 
   // On ajoute les points de départs de d'arrivée
    map.current.addLayer({
