@@ -22,7 +22,7 @@ const getRoute = (store) => (next) => (action) => {
       const state = store.getState();
       const configGetInterestPoints = {
         method: 'post',
-        url: 'http://localhost:3001/map',
+        url: 'https://server-yb.netlify.app/.netlify/functions/api/map',
         headers: { 
           'Content-Type': 'application/json'
         },

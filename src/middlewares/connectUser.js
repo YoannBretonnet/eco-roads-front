@@ -11,7 +11,7 @@ const authMiddleware = (store) => (next) => (action) => {
   const state = store.getState ();
   const config = {
   method: 'post',
-  url: 'https://chatroom-server-yb.netlify.app/.netlify/functions/api/login',
+  url: 'https://server-yb.netlify.app/.netlify/functions/api/login',
   headers: { 
     'Content-Type': 'application/json'
   },
