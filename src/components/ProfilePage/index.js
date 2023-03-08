@@ -11,7 +11,7 @@ import { useTheme } from '@mui/material/styles';
 // == Components
 import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
-import Main from 'src/components/ProfilePage/Main';
+import Main from 'src/components/ProfilePage/main';
 
 
 // == Composant

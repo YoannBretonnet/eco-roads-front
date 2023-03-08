@@ -1,5 +1,5 @@
 // == Style 
-// import 'mapbox-gl/dist/mapbox-gl.css';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 // == Component
 import Header from 'src/components/Header';
