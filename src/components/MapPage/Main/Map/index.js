@@ -10,7 +10,8 @@ import getMapRoute from './getMapRoute';
 import './styles.scss';
 
 // mapBox token
-mapboxgl.accessToken = 'pk.eyJ1IjoieWJyZXRvbm5ldCIsImEiOiJjbDVxdXliOHQweHV3M2tvM2hlMG41cXFwIn0.K1s56VTf9EAsagytjhRKSw';
+import { accessToken } from 'mapbox-gl';
+accessToken = 'pk.eyJ1IjoieWJyZXRvbm5ldCIsImEiOiJjbDVxdXliOHQweHV3M2tvM2hlMG41cXFwIn0.K1s56VTf9EAsagytjhRKSw';
 
 export default function Map() {
   const mapContainer = useRef(null);
