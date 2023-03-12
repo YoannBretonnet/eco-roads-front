@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 .menucontainer {
     position: fixed;
     display: flex;
@@ -28,7 +30,9 @@
     opacity: 0;
     right: -100px;
     transition: opacity 0.4s, right 0.4s;
-    
+    color: vars.$darkGreen;
+    font-size: 0.9rem;
+
     &--open {
         right: 45px;
         opacity: 1;

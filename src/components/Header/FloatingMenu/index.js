@@ -46,16 +46,13 @@ function FloatingMenu() {
                     }
                 </div>
                 <div className={!isOpen ? 'menu' : 'menu menu--open'} >
-                    <NavLink
-                        key="profilePage"
-                        to="/profile"
-                    >
-                        Profile
-                    </NavLink>
-                    <button
-                        onClick={handleDeconnexion}
-                    >Déconnexion
-                    </button>
+                <NavLink
+                    key="profilePage"
+                    to="/profile"
+                  >
+                  Profile
+                  </NavLink>
+                    <span onClick={handleDeconnexion}>Déconnexion</span>
                 </div>
             </div>
         </>

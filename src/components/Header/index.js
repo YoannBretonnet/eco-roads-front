@@ -136,8 +136,7 @@ function Header() {
                   >
                   Profile
                   </NavLink>
-                    <span onClick={handleDeconnexion}
-                    >Déconnexion</span>
+                    <span onClick={handleDeconnexion}>Déconnexion</span>
                 </nav>
                 )}
               </>
