@@ -64,17 +64,6 @@ function Footer() {
             À propos
           </NavLink>
         </Tooltip>
-        <p className={location.pathname !== '/about' ? 'menu-separator' : 'menu-separator-none'}>-</p>
-        <Tooltip title="CGU">
-          <NavLink
-            key="cgu"
-            className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
-            to={`${location.pathname}`}
-            onClick={saveCGU}
-          >
-            CGU
-          </NavLink>
-        </Tooltip>
       </nav>
     </Box>
   );

@@ -1,7 +1,7 @@
 // == Style 
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-// == Component
+// == Components
 import Header from 'src/components/Header';
 import Main from 'src/components/MapPage/Main';
 import Footer from 'src/components/Footer';
@@ -13,6 +13,7 @@ function MapPage() {
     <>
       <Header />
       <Main />
+      <div id="instructions"></div>
       <Footer />
              
      </>

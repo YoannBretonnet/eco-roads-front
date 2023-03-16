@@ -33,7 +33,7 @@ function StepsComponent() {
   return (
     <Box component="section" sx={{ margin: '16vh auto 0 auto', width: 'fit-content', height: 'fit-content' }}>
       <h2 className='carousel-title'>
-      Partez à la découverte de votre région au volant de votre voiture électrique
+      Partezzz à la découverte de votre région au volant de votre voiture électrique
       </h2>
       <Box component="article" sx={{ margin: 'auto', width: 'fit-content', height: 'fit-content', display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '7vw'}}>
         {

@@ -39,6 +39,12 @@ async function getMapRoute(map, start, coordsReplace, end, accessToken) {
       }
     }, 'point');
   }
+  // get the sidebar and add the instructions
+const instructions = document.getElementById('instructions');
+
+instructions.innerHTML = `<p><strong>Distance du trajet : ${Math.floor(
+  data.distance / 100
+)} kilomètres </strong></p>`;
 }
 
 export default getMapRoute;
